@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[ ![Codeship Status for drewandre/reporev](https://app.codeship.com/projects/3a1278a0-94b9-0135-3636-26f9e1beef69/status?branch=master)](https://app.codeship.com/projects/251025)
 
-Things you may want to cover:
+![Code Climate](https://codeclimate.com/github/<drewandre>/<reporev>.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Coverage Status](https://coveralls.io/repos/<drewandre>/<reporev>/badge.png)
