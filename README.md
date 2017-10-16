@@ -5,3 +5,6 @@
 ![Code Climate](https://codeclimate.com/github/<drewandre>/<reporev>.png)
 
 ![Coverage Status](https://coveralls.io/repos/<drewandre>/<reporev>/badge.png)
+
+ER Diagram:
+https://www.draw.io/#Hdrewandre%2Freporev%2Fmaster%2Fer-diagram.xml
