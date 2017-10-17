@@ -1,3 +1,6 @@
 class Example < ApplicationRecord
-  validates_presence_of :repo, :example_url
+  belongs_to :repo
+  belongs_to :user
+
+  validates_presence_of :repo, :url
 end

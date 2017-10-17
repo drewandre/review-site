@@ -3,6 +3,7 @@ class CreateVotes < ActiveRecord::Migration[5.1]
     create_table :votes do |t|
       t.belongs_to :user, null: false
       t.belongs_to :review, null: false
+      t.belongs_to :comment, null: false
       t.boolean :upvoted, null: false, default: nil
 
       t.timestamps null: false
