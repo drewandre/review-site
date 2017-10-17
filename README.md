@@ -10,7 +10,7 @@
 <span>![Coverage Status](https://coveralls.io/repos/drewandre/reporev/badge.png)
 </span>
 
-ER Diagram:
+PostgreSQL ER Diagram:
 http://bit.ly/2ilNga0
 
 User stories:
