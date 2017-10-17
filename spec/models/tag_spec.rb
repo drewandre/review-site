@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_valid(:name).when("tag") }
+  it { should_not have_valid(:name).when(nil, '') }
+
+  it 'should have many repo tags' do
+    expect(Tag.new).to have_many :repo_tags
+  end
+
 end
