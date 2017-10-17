@@ -267,6 +267,7 @@ DEPENDENCIES
   factory_girl_rails
   launchy
   listen (~> 3.0.5)
+  omniauth
   omniauth-github
   pg (~> 0.18)
   pry-rails

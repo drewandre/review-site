@@ -10,12 +10,13 @@
 
   <body>
     <div class="navigation">
+      <%= link_to "Home", root_path %>
+
       <% if current_user %>
-        <%= current_user.email %>
+        <%= current_user.login %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to "Sign in", new_user_session_path %>
-        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "Sign in", user_github_omniauth_authorize_path %>
       <% end %>
     </div>
 
