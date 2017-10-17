@@ -1,13 +1,13 @@
 # README
 
 
-<span>[ ![Codeship Status for drewandre/reporev](https://app.codeship.com/projects/3a1278a0-94b9-0135-3636-26f9e1beef69/status?branch=master)](https://app.codeship.com/projects/251025)
+<span>[ ![Codeship Status for drewandre/reporev](https://app.codeship.com/projects/3a1278a0-94b9-0135-3636-26f9e1beef69/status?branch=master)](https://app.codeship.com/projects/251025)</span>
 
-<a href="https://codeclimate.com/github/drewandre/reporev/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9a53a27137391842426/maintainability" /></a>
+<span><a href="https://codeclimate.com/github/drewandre/reporev/maintainability"><img src="https://api.codeclimate.com/v1/badges/f9a53a27137391842426/maintainability" /></a></span>
 
-<a href="https://codeclimate.com/github/drewandre/reporev/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f9a53a27137391842426/test_coverage" /></a>
+<span><a href="https://codeclimate.com/github/drewandre/reporev/test_coverage"><img src="https://api.codeclimate.com/v1/badges/f9a53a27137391842426/test_coverage" /></a></span>
 
-![Coverage Status](https://coveralls.io/repos/drewandre/reporev/badge.png)
+<span>![Coverage Status](https://coveralls.io/repos/drewandre/reporev/badge.png)
 </span>
 
 ER Diagram:
