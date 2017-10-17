@@ -11,7 +11,7 @@
 </span>
 
 ER Diagram:
-https://www.draw.io/#Hdrewandre%2Freporev%2Fmaster%2Fer-diagram.xml
+http://bit.ly/2ilNga0
 
 User stories:
 As a user I want to be able to sign up through github or log in
