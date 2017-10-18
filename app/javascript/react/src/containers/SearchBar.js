@@ -50,11 +50,9 @@ class SearchBar extends Component {
       })
       errorDiv = <div>{errorItems}</div>
     }
-
     return(
-      <form onSubmit={this.handleFormSubmit}>
+      <form className="row collapse postfix-round" onSubmit={this.handleFormSubmit}>
         {errorDiv}
-        <div className="row collapse postfix-round">
           <div className="small-10 columns">
             <SearchField
               query={this.state.query}
@@ -66,7 +64,6 @@ class SearchBar extends Component {
           <div className="small-2 columns">
             <input className="button success postfix" type="submit" value="Submit" />
           </div>
-        </div>
       </form>
     );
   }
