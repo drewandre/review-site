@@ -52,23 +52,19 @@ class SearchBar extends Component {
     }
 
     return(
-      <form className="centered-form" onSubmit={this.handleFormSubmit}>
-        <div className="row">
-          <div className="large-12 columns">
-            <div className="row collapse">
-              <div className="small-10 columns">
-                <SearchField
-                  query={this.state.query}
-                  name='Search'
-                  handlerFunction={this.handleSearch}
-                  placeholder="Search GitHub repositories"
-                />
-              </div>
-              <div className="small-2 columns">
-                <input className="button postfix" type="submit" value="Submit" />
-              </div>
-              <small class="error">{errorDiv}</small>
-            </div>
+      <form onSubmit={this.handleFormSubmit}>
+        {errorDiv}
+        <div className="row collapse postfix-round">
+          <div className="small-10 columns">
+            <SearchField
+              query={this.state.query}
+              name='Search'
+              handlerFunction={this.handleSearch}
+              placeholder="Search GitHub repositories"
+            />
+          </div>
+          <div className="small-2 columns">
+            <input className="button success postfix" type="submit" value="Submit" />
           </div>
         </div>
       </form>
