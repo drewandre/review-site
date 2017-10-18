@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017172803) do
+ActiveRecord::Schema.define(version: 20171017151426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "review_id"
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20171017172803) do
   end
 
   create_table "repo_tags", force: :cascade do |t|
-    t.bigint "repo_id"
-    t.bigint "tag_id"
+    t.bigint "repo_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["repo_id"], name: "index_repo_tags_on_repo_id"
@@ -73,22 +73,32 @@ ActiveRecord::Schema.define(version: 20171017172803) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "login", null: false
+    t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "review_id", null: false
+    t.bigint "comment_id", null: false
     t.boolean "upvoted", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "comment_id", null: false
     t.index ["comment_id"], name: "index_votes_on_comment_id"
     t.index ["review_id"], name: "index_votes_on_review_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
-  add_foreign_key "votes", "comments"
 end
