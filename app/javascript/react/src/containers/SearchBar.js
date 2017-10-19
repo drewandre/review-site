@@ -20,17 +20,10 @@ class SearchBar extends Component {
     let joinedQuery = "?q="
     if(this.validateSearch(this.state.query)) {
 
-      joinedQuery+=this.state.query.split(' ')
-      .map(word => `${word.trim()}`)
-      .join('+');
+      joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
 
-      let formPayLoad = {
-        query: joinedQuery,
-        onlyReviews: this.state.onlyReviews
-      };
-
+      let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
       this.props.submission(formPayLoad);
-
 
       fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
       .then(response => {
@@ -43,11 +36,8 @@ class SearchBar extends Component {
         }
       })
       .then(response => response.json())
-      .then(body => {
-        console.log(body)
-      })
+      .then(body => { console.log(body) })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
     }
   }
 
