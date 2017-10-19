@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   it 'should have many reviews' do
     expect(User.new).to have_many :reviews
   end

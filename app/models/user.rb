@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include ActiveModel::Serializers::JSON
+
   devise :database_authenticatable, :rememberable, :trackable,
          :omniauthable, omniauth_providers: [:github]
 
@@ -12,6 +14,33 @@ class User < ApplicationRecord
 
   def email_required?
     false
+  end
+
+  def api_url
+    "http://localhost:3000/api/v1"
+    #"https://reporev.herokuapp.com/api/v1"
+  end
+
+  def github_url
+    "https://github.com/#{login}"
+  end
+
+  def reporev_url
+    "#{api_url}/users/#{login}"
+  end
+
+  def attributes
+    {
+      "id": id,
+      "login": login,
+      "github_url": github_url,
+      "reporev_url": reporev_url,
+      # "name": "",
+      # "avatar_url": "",
+      # "bio": "",
+      "email": email,
+      "uid": uid
+    }
   end
 
   has_many :reviews
