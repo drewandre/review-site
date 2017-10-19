@@ -23,7 +23,7 @@ class Api::V1::ReposController < ApplicationController
 
     @reporev_repos = Repo.where(user_slug: user_slug)
 
-    url = "https://zerovolts:a0e0d456b7ccfc32519eb7b084e77d2cc7940fe6@api.github.com/users/#{user_slug}/repos"
+    url = "https://#{ENV["GITHUB_ACCESS_TOKEN"]}@api.github.com/users/#{user_slug}/repos"
     # filter out the repos that are already in our database
     @github_repos = JSON.parse(RestClient.get(url)).select do |github_repo|
       @reporev_repos.map do |repo|
@@ -32,7 +32,7 @@ class Api::V1::ReposController < ApplicationController
     end.map { |repo| transform_repo(repo) }
 
     render json: {
-      repos: @reporev_repos,
+      repos: @reporev_repos.map { |repo| {from_github: false}.merge(repo.as_json) },
       github_repos: @github_repos
     }
   end
@@ -47,10 +47,10 @@ class Api::V1::ReposController < ApplicationController
     )
 
     if !@repo
-      url = "https://zerovolts:a0e0d456b7ccfc32519eb7b084e77d2cc7940fe6@api.github.com/repos/#{user_slug}/#{repo_slug}"
+      url = "https://#{ENV["GITHUB_ACCESS_TOKEN"]}@api.github.com/repos/#{user_slug}/#{repo_slug}"
       @repo = transform_repo(JSON.parse(RestClient.get(url)))
     end
 
-    render json: @repo
+    render json: {from_github: false}.merge(@repo.as_json)
   end
 end
