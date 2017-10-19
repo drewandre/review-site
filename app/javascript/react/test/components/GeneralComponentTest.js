@@ -1,4 +1,4 @@
-import App from '../src/App';
+import GeneralComponent from '../../src/components/GeneralComponent';
 import React from 'react'
 import { mount, shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
@@ -8,7 +8,7 @@ describe('A test for App', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<App />)
+    wrapper = mount(<GeneralComponent />)
   })
 
   it('should pass', () => {

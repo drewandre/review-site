@@ -7,12 +7,18 @@ class App extends Component {
     this.state = {
       data: []
     }
-    this.query = this.query.bind(this)
+    this.submission = this.submission.bind(this)
   }
 
-  query(submission) {
-    this.setState({ data: this.state.data.concat(submission) })
-    console.log(submission)
+  submission(e) {
+
+    // this.setState({ data: this.state.data.concat(e.query) })
+    console.log("App received query of = " + e.query)
+    console.log("App received bool of = " + e.onlyReviews)
+
+    // let interpolated = this.state.data.join('+');
+    // let apiUrl = `https://api.github.com/search/repositories?q=${interpolated}&sort=stars&order=desc`
+    // console.log("Interpolated submission = " + apiUrl)
   }
 
   render() {
@@ -20,7 +26,7 @@ class App extends Component {
       <div className="row">
         <div className="medium-8 medium-offset-2 small-12 columns">
           <h1 className="text-center">RepoRev</h1>
-          <SearchBar query={this.query} />
+          <SearchBar submission={this.submission} />
         </div>
       </div>
     );

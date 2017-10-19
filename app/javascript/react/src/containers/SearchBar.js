@@ -6,26 +6,34 @@ class SearchBar extends Component {
     super(props)
     this.state = {
       errors: {},
-      query: ''
+      query: [],
+      onlyReviews: false
     }
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleOptions = this.handleOptions.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.validateSearch = this.validateSearch.bind(this);
   }
 
   handleFormSubmit(e) {
     e.preventDefault();
-    if(
-      this.validateSearch(this.state.query)
-    ) {
-      this.props.query(this.state.query);
+    let joinedQuery;
+    if(this.validateSearch(this.state.query)) {
+      let formPayLoad = {
+        query: this.state.query,
+        onlyReviews: this.state.onlyReviews
+      };
+      this.props.submission(formPayLoad);
     }
+  }
+
+  handleOptions(e) {
+    this.setState({ onlyReviews: !this.state.onlyReviews })
   }
 
   handleSearch(e) {
     this.validateSearch(e.target.value)
-    this.setState({ query: e.target.value })
-    console.log(e.target.value);
+    this.setState({ query: e.target.value.toLowerCase() })
   }
 
   validateSearch(search) {
@@ -52,18 +60,18 @@ class SearchBar extends Component {
     }
     return(
       <form className="row collapse postfix-round" onSubmit={this.handleFormSubmit}>
-        {errorDiv}
-          <div className="small-10 columns">
-            <SearchField
-              query={this.state.query}
-              name='Search'
-              handlerFunction={this.handleSearch}
-              placeholder="Search GitHub repositories"
-            />
-          </div>
-          <div className="small-2 columns">
-            <input className="button success postfix" type="submit" value="Submit" />
-          </div>
+        <div className="small-8 columns">
+          <SearchField
+            handlerFunction={this.handleSearch}
+            placeholder="Search GitHub repositories"
+          />
+        </div>
+        <div className="small-2 columns">
+          <input className="button success postfix" defaultValue="Only Reviews" onClick={this.handleOptions} />
+        </div>
+        <div className="small-2 columns">
+          <input className="button outline postfix" type="submit" value="Submit" />
+        </div>
       </form>
     );
   }
