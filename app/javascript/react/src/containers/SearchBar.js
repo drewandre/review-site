@@ -6,7 +6,7 @@ class SearchBar extends Component {
     super(props)
     this.state = {
       errors: {},
-      query: [],
+      query: '',
       onlyReviews: false
     }
     this.handleSearch = this.handleSearch.bind(this);
@@ -17,13 +17,37 @@ class SearchBar extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    let joinedQuery;
+    let joinedQuery = "?q="
     if(this.validateSearch(this.state.query)) {
+
+      joinedQuery+=this.state.query.split(' ')
+      .map(word => `${word.trim()}`)
+      .join('+');
+
       let formPayLoad = {
-        query: this.state.query,
+        query: joinedQuery,
         onlyReviews: this.state.onlyReviews
       };
+
       this.props.submission(formPayLoad);
+
+
+      fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        console.log(body)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+
     }
   }
 
