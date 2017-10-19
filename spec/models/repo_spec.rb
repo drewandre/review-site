@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Repo, type: :model do
-  it { should have_valid(:github_repo_url).when("www.github.com") }
-  it { should_not have_valid(:github_repo_url).when(nil, '') }
-
   it { should have_valid(:average_rating).when(0, 2, 5) }
   it { should_not have_valid(:average_rating).when(nil, '', -1, 5.3) }
 

@@ -10,6 +10,7 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'rest-client'
 
 group :development do
   gem 'listen', '~> 3.0.5'
