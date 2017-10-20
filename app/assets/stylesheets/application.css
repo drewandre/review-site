@@ -15,11 +15,27 @@
  *= require foundation_and_overrides
  */
 
-/*.alert {
-  color: red;
+.repo-tile {
+  background-color: #158DB8;
+  margin: 10px;
+  padding: 1em;
+  border-radius: 5px;
+  border: 3px solid rgba(0,0,0, 0.1);
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #D04E59;
+}
 
-.row {
-  margin: auto;
+.search {
+  padding-top: 15%;
+}
+
+/*.title {
+  padding-top: 350px;
 }*/

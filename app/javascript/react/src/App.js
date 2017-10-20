@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SearchBar from './containers/SearchBar'
+import IndexSearch from './containers/IndexSearch'
 
 class App extends Component {
   constructor(props) {
@@ -7,22 +7,16 @@ class App extends Component {
     this.state = {
       data: []
     }
-    this.submission = this.submission.bind(this)
-  }
-
-  submission(e) {
-
-    // this.setState({ data: this.state.data.concat(e.query) })
-    console.log("App received query of = " + e.query)
-    console.log("App received bool of = " + e.onlyReviews)
   }
 
   render() {
     return (
-      <div className="row">
-        <div className="medium-8 medium-offset-2 small-12 columns">
-          <h1 className="text-center">RepoRev</h1>
-          <SearchBar submission={this.submission} />
+      <div>
+        <h1 className="title text-center">RepoRev</h1>
+        <div className="row search">
+          <div className="medium-8 medium-offset-2 small-10 small-offset-1 columns">
+            <IndexSearch />
+          </div>
         </div>
       </div>
     );

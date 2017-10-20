@@ -9,7 +9,7 @@ describe('SearchBar', () => {
 
   beforeEach(() => {
     jasmineEnzyme();
-    // spyOn(SearchBar.prototype, 'handlerFunction').and.callThrough();
+    // spyOn(SearchBar.prototype, 'handleSearch').and.callThrough();
     wrapper = mount(<SearchBar />);
   });
 
@@ -38,10 +38,10 @@ describe('SearchBar', () => {
   //     expect(SearchBar.prototype.handleSearch).toHaveBeenCalled();
   //   });
   //
-  // it('should change the babyElephant property in the state to the opposite boolean value', () => {
-  //   wrapper.find(Elephant).props().onClick();
-  //   expect(wrapper.state()).toEqual({ babyElephant: true });
-  // });
+  //   it('should change the babyElephant property in the state to the opposite boolean value', () => {
+  //     wrapper.find(Elephant).props().onClick();
+  //     expect(wrapper.state()).toEqual({ babyElephant: true });
+  //   });
   // });
 
 });

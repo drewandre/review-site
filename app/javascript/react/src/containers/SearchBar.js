@@ -7,7 +7,8 @@ class SearchBar extends Component {
     this.state = {
       errors: {},
       query: '',
-      onlyReviews: false
+      onlyReviews: false,
+      lastKeyPressedTime: Date.now()
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleOptions = this.handleOptions.bind(this);
@@ -16,38 +17,53 @@ class SearchBar extends Component {
   }
 
   handleFormSubmit(e) {
-    e.preventDefault();
-    let joinedQuery = "?q="
-    if(this.validateSearch(this.state.query)) {
+    // e.preventDefault();
+    // event.persist()
+    console.log(Date.now() - this.state.lastKeyPressedTime)
+    console.log(Date.now() - this.state.lastKeyPressedTime < 1000)
+    if (Date.now() - this.state.lastKeyPressedTime < 1000) {
 
-      joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
+      let joinedQuery = "?q="
+      if(this.validateSearch(this.state.query)) {
 
-      let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
-      this.props.submission(formPayLoad);
+        joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
 
-      fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => { console.log(body) })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-    }
+        // let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
+        // this.props.submission(formPayLoad);
+
+        // fetch(`http://drewandre:2c1e857e91fa2e726c2ee76f060ca522b8b361c2@api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
+
+        fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+        .then(response => response.json())
+        .then(body => { this.props.results(body.items) })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+      }
+    } // end Date.now check
   }
 
   handleOptions(e) {
+    console.log("clicked!");
     this.setState({ onlyReviews: !this.state.onlyReviews })
   }
 
   handleSearch(e) {
+    this.setState({ lastKeyPressedTime: Date.now() })
+
     this.validateSearch(e.target.value)
     this.setState({ query: e.target.value.toLowerCase() })
+
+    setTimeout(() => this.handleFormSubmit(e), 1000);
+    // this.handleFormSubmit(e);
+
   }
 
   validateSearch(search) {
@@ -73,18 +89,23 @@ class SearchBar extends Component {
       errorDiv = <div>{errorItems}</div>
     }
     return(
-      <form className="row collapse postfix-round" onSubmit={this.handleFormSubmit}>
-        <div className="small-8 columns">
-          <SearchField
-            handlerFunction={this.handleSearch}
-            placeholder="Search GitHub repositories"
-          />
-        </div>
-        <div className="small-2 columns">
-          <input className="button success postfix" defaultValue="Only Reviews" onClick={this.handleOptions} />
-        </div>
-        <div className="small-2 columns">
-          <input className="button outline postfix" type="submit" value="Submit" />
+      <form onSubmit={this.handleFormSubmit}>
+        <div className="row">
+          <div className="row collapse postfix-round">
+            <div className="small-10 medium-10 large-11 columns">
+              <SearchField
+                handlerFunction={this.handleSearch}
+                placeholder="Search GitHub repositories"
+              />
+            </div>
+            <div className="small-2 medium-2 large-1 columns">
+              <a className="dropdown button postfix arrow-only" onClick={this.handleOptions}>
+                <div className="options-dropdown">
+
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </form>
     );
