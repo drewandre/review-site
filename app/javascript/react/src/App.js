@@ -1,8 +1,18 @@
 import React from 'react';
+import CommentTile from './components/CommentTile';
+// import NavBar from './components/NavBar';
+// import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 
   const App = props => {
   return(
-    <h1>Hello World!</h1>
+    // <Router history={browserHistory}>
+    //   <Route path='/' component={NavBar}>
+    //   <IndexRoute component={}/>
+    //     <Route path="repos/:id" component={RepoShow}/>
+      <CommentTile
+      />
+      /* </Route>
+    </Router> */
   )
 }
 
