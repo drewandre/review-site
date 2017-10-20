@@ -1,18 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
-import BackButton from './BackButton';
+import { Link } from 'react-router-dom';
 
-  const NavBar = props => {
-    return(
-      <div>
-        <BackButton/>
-        <Link to='/'>HOME</Link>
-        <h1>Home</h1>
-        {props.children}
-      </div>
-    )
+//import BackButton from './BackButton';
 
-  }
-
+const NavBar = props => {
+  return(
+    <div>
+      <Link to='/'>Home</Link>
+    </div>
+  )
+}
 
 export default NavBar;

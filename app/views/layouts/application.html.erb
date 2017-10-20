@@ -13,8 +13,6 @@
 
   <body>
     <div class="navigation">
-      <%= link_to "Home", root_path %>
-
       <% if current_user %>
         <%= current_user.login %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>

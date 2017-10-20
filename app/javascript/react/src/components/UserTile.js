@@ -1,4 +1,4 @@
 import React from 'react';
 import { Link } from 'react-router'
 
-export default UserTile;
+// export default UserTile;

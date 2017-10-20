@@ -1,34 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+
 import SearchBar from './containers/SearchBar'
-import CommentTile from './components/CommentTile';
+import RepoShowContainer from './containers/RepoShowContainer';
+import NavBar from "./components/NavBar"
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: []
-    }
-    this.submission = this.submission.bind(this)
-  }
+const App = props => (
+  <div className="row">
+    <NavBar />
+    <div className="medium-8 medium-offset-2 small-12 columns">
+      <Switch>
+        <Route exact path="/" component={SearchBar} />
+        <Route path="/:user_slug/:repo_slug" component={RepoShowContainer} />
+      </Switch>
+    </div>
+  </div>
+)
 
-  submission(e) {
-
-    // this.setState({ data: this.state.data.concat(e.query) })
-    console.log("App received query of = " + e.query)
-    console.log("App received bool of = " + e.onlyReviews)
-  }
-
-  render() {
-    return (
-      <div className="row">
-        <div className="medium-8 medium-offset-2 small-12 columns">
-          <h1 className="text-center">RepoRev</h1>
-          <SearchBar submission={this.submission} />
-          <CommentTile />
-        </div>
-      </div>
-    );
-  }
-}
-
-export default App;
+export default App
