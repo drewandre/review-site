@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { should have_valid(:email).when("email@test.com") }
-  it { should_not have_valid(:email).when(nil) }
-
   it 'should have many reviews' do
     expect(User.new).to have_many :reviews
   end

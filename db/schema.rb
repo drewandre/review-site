@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017151426) do
+ActiveRecord::Schema.define(version: 20171018181718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,13 @@ ActiveRecord::Schema.define(version: 20171017151426) do
   end
 
   create_table "repos", force: :cascade do |t|
-    t.string "github_repo_url", null: false
     t.float "average_rating", null: false
     t.integer "total_reviews", default: 0, null: false
     t.string "example_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_slug"
+    t.string "repo_slug"
   end
 
   create_table "reviews", force: :cascade do |t|
