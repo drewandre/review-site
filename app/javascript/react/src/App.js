@@ -1,30 +1,42 @@
 import React, { Component } from 'react'
-import SearchBar from './containers/SearchBar'
+import IndexSearch from './containers/IndexSearch'
+import NavBar from './containers/NavBar'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      searchResults: [],
+      loading: false
     }
-    this.submission = this.submission.bind(this)
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.loading = this.loading.bind(this);
   }
 
-  submission(e) {
 
-    // this.setState({ data: this.state.data.concat(e.query) })
-    console.log("App received query of = " + e.query)
-    console.log("App received bool of = " + e.onlyReviews)
+
+  handleSearch(e) {
+    this.setState({ searchResults: e })
+  }
+
+  loading(e) {
+    this.setState({ loading: e })
+    // this.setState({ loading: !this.state.loading })
   }
 
   render() {
     return (
-      <div className="row">
-        <div className="medium-8 medium-offset-2 small-12 columns">
-          <h1 className="text-center">RepoRev</h1>
-          <SearchBar submission={this.submission} />
-        </div>
-      </div>
+      <nav>
+        <NavBar
+          handleSearch={this.handleSearch}
+          loading={this.loading}
+        />
+        <IndexSearch
+          searchResults={this.state.searchResults}
+          loading={this.state.loading}
+        />
+      </nav>
     );
   }
 }

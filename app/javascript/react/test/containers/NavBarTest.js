@@ -1,19 +1,19 @@
-import SearchBar from '../../src/containers/SearchBar';
+import NavBar from '../../src/containers/NavBar';
 import SearchField from '../../src/components/SearchField';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 
-describe('SearchBar', () => {
+describe('NavBar', () => {
   let wrapper;
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = mount(<SearchBar />);
+    wrapper = mount(<NavBar />);
   });
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ errors: {}, query: '', lastKeyPressedTime: 0 });
+    expect(wrapper.state()).toEqual({ results: [], dropdown: false });
   });
 
   it('should render an SearchField Component', () => {
