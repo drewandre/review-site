@@ -2,11 +2,25 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import RepoTile from '../components/RepoTile'
 
+import {
+  ChasingDots,
+  Circle,
+  CubeGrid,
+  DoubleBounce,
+  FadingCircle,
+  FoldingCube,
+  Pulse,
+  RotatingPlane,
+  ThreeBounce,
+  WanderingCubes,
+  Wave
+} from 'better-react-spinkit'
+
 class IndexSearch extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: []
+      results: [],
     }
     this.submission = this.submission.bind(this)
     this.results = this.results.bind(this)
@@ -26,19 +40,30 @@ class IndexSearch extends Component {
   }
 
   render() {
+
+    let loadingStatus = null
+    let circle = null
+
+    if (this.props.loading) {
+      loadingStatus="loading icon true"
+      circle = <Circle size={50} scaleEnd={1} />
+
+    } else {
+      loadingStatus = ''
+      circle = null
+    }
+
     return(
-      <div className="index-search">
-        <SearchBar
-          // submission={this.submission}
-          results={this.results}
-        />
-        <RepoTile
-          results={this.state.results}
-        />
+      <div>
+        <div className="results">
+          <RepoTile
+            searchResults={this.props.searchResults}
+          />
+        </div>
+        <div className="centered">{circle}</div>
       </div>
     );
   }
-
 }
 
 export default IndexSearch;

@@ -1,24 +1,42 @@
 import React, { Component } from 'react'
 import IndexSearch from './containers/IndexSearch'
+import NavBar from './containers/NavBar'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      searchResults: [],
+      loading: false
     }
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.loading = this.loading.bind(this);
+  }
+
+
+
+  handleSearch(e) {
+    this.setState({ searchResults: e })
+  }
+
+  loading(e) {
+    this.setState({ loading: e })
+    // this.setState({ loading: !this.state.loading })
   }
 
   render() {
     return (
-      <div>
-        <h1 className="title text-center">RepoRev</h1>
-        <div className="row search">
-          <div className="medium-8 medium-offset-2 small-10 small-offset-1 columns">
-            <IndexSearch />
-          </div>
-        </div>
-      </div>
+      <nav>
+        <NavBar
+          handleSearch={this.handleSearch}
+          loading={this.loading}
+        />
+        <IndexSearch
+          searchResults={this.state.searchResults}
+          loading={this.state.loading}
+        />
+      </nav>
     );
   }
 }

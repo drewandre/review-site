@@ -7,8 +7,8 @@ class SearchBar extends Component {
     this.state = {
       errors: {},
       query: '',
-      onlyReviews: false,
-      lastKeyPressedTime: Date.now()
+      // onlyReviews: false,
+      lastKeyPressedTime: 0
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleOptions = this.handleOptions.bind(this);
@@ -17,21 +17,16 @@ class SearchBar extends Component {
   }
 
   handleFormSubmit(e) {
-    // e.preventDefault();
-    // event.persist()
-    console.log(Date.now() - this.state.lastKeyPressedTime)
-    console.log(Date.now() - this.state.lastKeyPressedTime < 1000)
-    if (Date.now() - this.state.lastKeyPressedTime < 1000) {
+    e.preventDefault();
+
+    if (Date.now() - this.state.lastKeyPressedTime > 1000) {
 
       let joinedQuery = "?q="
-      if(this.validateSearch(this.state.query)) {
-
+      if(this.validateSearch(e)) {
         joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
 
         // let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
         // this.props.submission(formPayLoad);
-
-        // fetch(`http://drewandre:2c1e857e91fa2e726c2ee76f060ca522b8b361c2@api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
 
         fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
         .then(response => {
@@ -44,34 +39,35 @@ class SearchBar extends Component {
           }
         })
         .then(response => response.json())
-        .then(body => { this.props.results(body.items) })
+        .then(body => { this.props.handleSearch(body.items) })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
+        this.props.loading(false)
       }
     } // end Date.now check
   }
 
   handleOptions(e) {
-    console.log("clicked!");
     this.setState({ onlyReviews: !this.state.onlyReviews })
   }
 
   handleSearch(e) {
+    this.props.handleSearch([])
     this.setState({ lastKeyPressedTime: Date.now() })
-
-    this.validateSearch(e.target.value)
-    this.setState({ query: e.target.value.toLowerCase() })
-
+    if (this.validateSearch(e.target.value)) {
+      this.setState({ query: e.target.value.toLowerCase() })
+    }
     setTimeout(() => this.handleFormSubmit(e), 1000);
-    // this.handleFormSubmit(e);
-
   }
 
   validateSearch(search) {
     if (search === '') {
+      this.props.loading(false);
+      this.props.handleSearch([])
       let newError = { search: 'Search field may not be blank.' }
       this.setState({ errors: Object.assign(this.state.errors, newError) })
       return false
     } else {
+      this.props.loading(true);
       let errorState = this.state.errors
       delete errorState.search
       this.setState({ errors: errorState })
@@ -88,26 +84,13 @@ class SearchBar extends Component {
       })
       errorDiv = <div>{errorItems}</div>
     }
-    return(
-      <form onSubmit={this.handleFormSubmit}>
-        <div className="row">
-          <div className="row collapse postfix-round">
-            <div className="small-10 medium-10 large-11 columns">
-              <SearchField
-                handlerFunction={this.handleSearch}
-                placeholder="Search GitHub repositories"
-              />
-            </div>
-            <div className="small-2 medium-2 large-1 columns">
-              <a className="dropdown button postfix arrow-only" onClick={this.handleOptions}>
-                <div className="options-dropdown">
 
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </form>
+    return(
+      // <form onSubmit={this.handleFormSubmit}>
+      <SearchField
+        handlerFunction={this.handleSearch}
+        placeholder="Search GitHub repositories"
+      />
     );
   }
 
