@@ -5,7 +5,8 @@ RSpec.describe Api::V1::ReposController, type: :controller do
     Repo.create(
       user_slug: "zerovolts",
       repo_slug: "gitquest",
-      average_rating: 3.2
+      average_rating: 3.2,
+      fork: false,
     )
   end
 
@@ -13,7 +14,8 @@ RSpec.describe Api::V1::ReposController, type: :controller do
     Repo.create(
       user_slug: "rust-lang",
       repo_slug: "rust",
-      average_rating: 4.7
+      average_rating: 4.7,
+      fork: true
     )
   end
 

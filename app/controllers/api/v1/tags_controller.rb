@@ -5,7 +5,7 @@ class Api::V1::TagsController < ApplicationController
       {
         id: tag.id,
         name: tag.name,
-        tag_url: "http://localhost:3000/api/v1/tags/#{tag.name}",
+        tag_url: "#{ENV["WEB_URL"]}/api/v1/tags/#{tag.name}",
         count: Repo.all.select { |repo| repo.tags.include? tag }.length
       }
     end)

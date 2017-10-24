@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SearchBar from './containers/SearchBar'
+import ReviewContainer from './containers/ReviewContainer'
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends Component {
       <div className="row">
         <div className="medium-8 medium-offset-2 small-12 columns">
           <h1 className="text-center">RepoRev</h1>
-          <SearchBar submission={this.submission} />
+          <ReviewContainer />
         </div>
       </div>
     );

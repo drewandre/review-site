@@ -23,6 +23,18 @@ def set_omniauth(opts = {})
     "info" => {
       "nickname" => user_hash[:nickname],
       "email" => user_hash[:email],
+      "name" => "Zach Stone"
+    },
+    "extra" => {
+      "raw_info" => {
+        "avatar_url" => "",
+        "bio" => "",
+        "location" => "",
+        "blog" => "",
+        "public_repos" => "",
+        "followers" => "",
+        "following" => ""
+      }
     }
   })
 end

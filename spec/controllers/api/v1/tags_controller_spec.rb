@@ -9,7 +9,8 @@ RSpec.describe Api::V1::TagsController, type: :controller do
       user_slug: "zerovolts",
       repo_slug: "gitquest",
       average_rating: 3.2,
-      tags: [Tag.first]
+      tags: [Tag.first],
+      fork: false
     )
   end
 

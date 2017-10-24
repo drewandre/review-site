@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+ */
+
+/*.alert {
+  color: red;
+}
+
+
+.row {
+  margin: auto;
+}*/
+
+body, h1, h2, h3, h4, h5 {
+  color: #444;
+}
+
+.review-tile {
+  background: #eee;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 1em;
+}
+
+.vote {
+  user-select: none;
+  cursor: pointer;
+  border-radius: 0.3em;
+  margin: 0.2em;
+  padding: 0.2em 0.5em;
+  background: #fff;
+  //border: 1px solid #aaa;
+}
+
+.upvoted {
+  background: #bdf0d2;
+  //border: 1px solid #27ae60;
+}
+
+.downvoted {
+  background: #f8c9c4;
+  //border: 1px solid #c0392b;
+}
+
+.fa-thumbs-up {
+  color: #2ecc71;
+}
+
+.fa-thumbs-down {
+  color: #e74c3c;
+}
+
+.rating {
+  background: #fff;
+  border-radius: 0.3em;
+  margin: 0.2em;
+  padding: 0.2em 0.5em;
+  //border: 1px solid #aaa;
+}
+
+.fa-star {
+  color: #f1c40f;
+}
+
+.review-body {
+  margin: 1em 0.2em 0.2em 0.2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
+}
+
+.show-comments {
+  text-align: center;
+}
+
+.comment-tile {
+  background: #eee;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 1em 3em;
+}

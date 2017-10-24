@@ -15,5 +15,4 @@ RSpec.describe Review, type: :model do
   it 'should have many comments' do
     expect(Review.new).to have_many :comments
   end
-
 end

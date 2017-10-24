@@ -7,12 +7,7 @@ RSpec.describe Vote, type: :model do
     expect(Vote.new).to belong_to :user
   end
 
-  it 'should belong to comment' do
-    expect(Vote.new).to belong_to :comment
-  end
-
   it 'should belong to review' do
     expect(Vote.new).to belong_to :review
   end
-
 end

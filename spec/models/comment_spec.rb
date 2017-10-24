@@ -11,9 +11,4 @@ RSpec.describe Comment, type: :model do
   it 'should belong to user' do
     expect(Comment.new).to belong_to :user
   end
-
-  it 'should have many votes' do
-    expect(Comment.new).to have_many :votes
-  end
-
 end
