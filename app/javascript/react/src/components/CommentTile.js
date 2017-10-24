@@ -1,56 +1,39 @@
-import React from "react"
+import React, { Component } from "react"
+import TextInputField from '../components/TextInputField'
 
-const CommentTile = props => {
-  return (
-    <div>
-      <a href={props.comment.username}>{props.comment.username}</a>
-      <p>{props.comment.body}</p>
-    </div>
-  )
+class CommentTile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      commentBody:''
+    }
+    this.handleTextInputField = this.handleTextInputField.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleTextInputField(e) {
+    this.setState({ commentBody: e.target.value })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    let formPayload = {
+      //May need to change this variable name to get this to work
+      body: this.state.commentBody
+    };
+    this.addNewComment(formPayload);
+  }
+
+  render() {
+    return(
+      <div>
+        <p>Individual comment tile</p>
+        {this.state.commentBody}
+      </div>
+    )
+  }
 }
 
 export default CommentTile
 
-// import React from 'react';
-// import TextInputField from '../components/TextInputField'
-// // import { Link } from 'react-router'
-//
-// class CommentTile extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       comment:''
-//     }
-//     this.handleChange = this.handleChange.bind(this);
-//     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-//   }
-//
-//   handleChange(event) {
-//     let value = event.target.value;
-//     let name = event.target.name;
-//     this.setState({ [name]: value })
-//   }
-//
-//   handleFormSubmit(event) {
-//     event.preventDefault();
-//   }
-//
-//   render() {
-//     console.log(this.state.comment)
-//     return(
-//       <form className="callout" onSubmit={this.handleFormSubmit}>
-//         <TextInputField
-//           content={this.state.comment}
-//           label="Body"
-//           name="body"
-//           handleChange={this.handleChange}
-//         />
-//         <div className="button-group">
-//           <input className="button" type="submit" value="Submit" />
-//         </div>
-//       </form>
-//     )
-//   }
-// }
-//
-// export default CommentTile;
+//API to post to: "/api/v1/reviews/:review_id/comments/"

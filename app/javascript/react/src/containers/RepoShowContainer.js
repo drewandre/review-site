@@ -1,14 +1,15 @@
-import React from "react"
+import React, { Component } from "react"
 import RepoShowComponent from "../components/RepoShowComponent"
-import ReviewTile from "../components/ReviewTile"
+import ReviewContainer from "../containers/ReviewContainer"
 
-class RepoShowContainer extends React.Component {
+class RepoShowContainer extends Component {
   constructor(props)  {
     super(props)
     this.state = {
       repo: {},
       reviews: []
     }
+
   }
 
   fetchRepoData(user, repo) {
@@ -38,15 +39,23 @@ class RepoShowContainer extends React.Component {
   }
 
   render() {
-    const reviews = this.state.reviews.map(review =>
-      <ReviewTile review={review} comments={["comment 1", "comment 2"]} />
-    )
 
-    return (
+    return(
       <div>
-        <RepoShowComponent repo={this.state.repo} />
-        {reviews}
+        <div className="repo-show-container">
+        </div>
+        <div className='repo-show-component'>
+          <RepoShowComponent
+            id={this.state.repo.id}
+            repo={this.state.repo}
+          />
+        </div>
+      <div className='review-container'>
+        <ReviewContainer
+          reviews={this.state.reviews}
+        />
       </div>
+    </div>
     )
   }
 }

@@ -9,5 +9,4 @@ const TagTile = props => {
   )
 }
 
-
 export default TagTile;

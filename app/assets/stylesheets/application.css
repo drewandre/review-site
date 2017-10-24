@@ -23,3 +23,25 @@
 .row {
   margin: auto;
 }*/
+
+.review-container {
+  background-color: red;
+}
+.repo-show-component {
+  width: 60%;
+  height: 50%;
+  border-radius: 10px;
+  background-color: grey;
+}
+
+.comments-container {
+  background-color: green;
+}
+
+.repo-show-container {
+  background-color: lightgrey;
+}
+
+.individual-review {
+  margin: 50px;
+}
