@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CommentContainer from './CommentContainer'
 import ReviewTile from '../components/ReviewTile'
+import TextInputField from '../components/TextInputField'
 
 class ReviewContainer extends Component {
   constructor(props) {
@@ -46,12 +47,24 @@ class ReviewContainer extends Component {
             body={review}
           />
         </div>
+
       )
     })
 
     return(
-      <div>
+      <div className='review-container'>
         {reviews}
+          <form className='review-tile'>
+            <TextInputField
+              content={this.state.reviewBody}
+              label= "Review"
+              name="review"
+              handleChange={this.handleTextInputField}
+            />
+            <div>
+              <input className="button" type="submit" value="Submit" onClick={this.handleSubmit}/>
+            </div>
+          </form>
       </div>
     )
   }

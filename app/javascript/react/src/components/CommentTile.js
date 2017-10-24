@@ -27,7 +27,6 @@ class CommentTile extends Component {
   render() {
     return(
       <div>
-        <p>Individual comment tile</p>
         {this.state.commentBody}
       </div>
     )

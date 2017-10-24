@@ -43,19 +43,15 @@ class RepoShowContainer extends Component {
     return(
       <div>
         <div className="repo-show-container">
-        </div>
-        <div className='repo-show-component'>
           <RepoShowComponent
             id={this.state.repo.id}
             repo={this.state.repo}
           />
+          <ReviewContainer
+            reviews={this.state.reviews}
+          />
         </div>
-      <div className='review-container'>
-        <ReviewContainer
-          reviews={this.state.reviews}
-        />
       </div>
-    </div>
     )
   }
 }
