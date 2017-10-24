@@ -4,15 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "RepoRev" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <div class="navigation">
+    <div class="user-sign-in-out">
       <% if current_user %>
         <%= current_user.login %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>

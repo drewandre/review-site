@@ -7,7 +7,8 @@ class SearchBar extends Component {
     this.state = {
       errors: {},
       query: '',
-      onlyReviews: false
+      // onlyReviews: false,
+      lastKeyPressedTime: 0
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleOptions = this.handleOptions.bind(this);
@@ -17,28 +18,32 @@ class SearchBar extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    let joinedQuery = "?q="
-    if(this.validateSearch(this.state.query)) {
 
-      joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
+    if (Date.now() - this.state.lastKeyPressedTime > 1000) {
 
-      let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
-      this.props.submission(formPayLoad);
+      let joinedQuery = "?q="
+      if(this.validateSearch(e)) {
+        joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
 
-      fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => { console.log(body) })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-    }
+        // let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
+        // this.props.submission(formPayLoad);
+
+        fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
+        .then(response => {
+          if (response.ok) {
+            return response;
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+          }
+        })
+        .then(response => response.json())
+        .then(body => { this.props.handleSearch(body.items) })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+        this.props.loading(false)
+      }
+    } // end Date.now check
   }
 
   handleOptions(e) {
@@ -46,16 +51,23 @@ class SearchBar extends Component {
   }
 
   handleSearch(e) {
-    this.validateSearch(e.target.value)
-    this.setState({ query: e.target.value.toLowerCase() })
+    this.props.handleSearch([])
+    this.setState({ lastKeyPressedTime: Date.now() })
+    if (this.validateSearch(e.target.value)) {
+      this.setState({ query: e.target.value.toLowerCase() })
+    }
+    setTimeout(() => this.handleFormSubmit(e), 1000);
   }
 
   validateSearch(search) {
     if (search === '') {
+      this.props.loading(false);
+      this.props.handleSearch([])
       let newError = { search: 'Search field may not be blank.' }
       this.setState({ errors: Object.assign(this.state.errors, newError) })
       return false
     } else {
+      this.props.loading(true);
       let errorState = this.state.errors
       delete errorState.search
       this.setState({ errors: errorState })
@@ -72,21 +84,13 @@ class SearchBar extends Component {
       })
       errorDiv = <div>{errorItems}</div>
     }
+
     return(
-      <form className="row collapse postfix-round" onSubmit={this.handleFormSubmit}>
-        <div className="small-8 columns">
-          <SearchField
-            handlerFunction={this.handleSearch}
-            placeholder="Search GitHub repositories"
-          />
-        </div>
-        <div className="small-2 columns">
-          <input className="button success postfix" defaultValue="Only Reviews" onClick={this.handleOptions} />
-        </div>
-        <div className="small-2 columns">
-          <input className="button outline postfix" type="submit" value="Submit" />
-        </div>
-      </form>
+      // <form onSubmit={this.handleFormSubmit}>
+      <SearchField
+        handlerFunction={this.handleSearch}
+        placeholder="Search GitHub repositories"
+      />
     );
   }
 
