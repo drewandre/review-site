@@ -6,17 +6,10 @@ class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: [],
-      dropdown: false
+      results: []
     }
     // this.submission = this.submission.bind(this)
     this.handleSignInOut = this.handleSignInOut.bind(this)
-    this.handleAccountDropDown = this.handleAccountDropDown.bind(this);
-
-  }
-
-  handleAccountDropDown(e) {
-    this.setState({ dropdown: !this.state.dropdown })
   }
 
   handleSignInOut(e) {
@@ -52,26 +45,25 @@ class NavBar extends Component {
 
   render(){
 
-    let dropdown
-    if(this.state.dropdown) {
-      dropdown = <NavDropdown
-        handleSignInOut={this.handleSignInOut}
-      />
-    } else {
-      dropdown = null
-    }
-
     return (
       <div>
         <div onClick={this.handleAccountDropDown} id='menu-toggle'>
-          <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-bars fa-2x" id='account-menu' aria-hidden="true"></i>
         </div>
           <SearchBar
             // submission={this.submission}
+            className='repo-search-bar'
             handleSearch={this.props.handleSearch}
             loading={this.props.loading}
+            emptyScreen={this.props.emptyScreen}
+            error={this.props.error}
           />
-        {dropdown}
+          <NavDropdown
+            handleSignInOut={this.handleSignInOut}
+          />
+          <div id='page-title'>
+            RepoRev
+          </div>
       </div>
     );
   }

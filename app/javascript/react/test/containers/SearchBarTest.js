@@ -13,18 +13,11 @@ describe('SearchBar', () => {
   });
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ errors: {}, query: '', lastKeyPressedTime: 0 });
+    expect(wrapper.state()).toEqual({ query: '', lastKeyPressedTime: 0 , language: '', topic: '', onlyReviews: false, disableFields: true });
   });
 
   it('should render an SearchField Component', () => {
     expect(wrapper.find(SearchField)).toBePresent();
-  });
-
-  it('should render the SearchField Component with specific props when SearchField is false', () => {
-    expect(wrapper.find(SearchField).props()).toEqual({
-      handlerFunction: jasmine.any(Function),
-      placeholder: "Search GitHub repositories"
-    });
   });
 
 });

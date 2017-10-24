@@ -13,7 +13,7 @@ describe('NavBar', () => {
   });
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ results: [], dropdown: false });
+    expect(wrapper.state()).toEqual({ results: [] });
   });
 
   it('should render an SearchField Component', () => {
@@ -23,7 +23,8 @@ describe('NavBar', () => {
   it('should render the SearchField Component with specific props when SearchField is false', () => {
     expect(wrapper.find(SearchField).props()).toEqual({
       handlerFunction: jasmine.any(Function),
-      placeholder: "Search GitHub repositories"
+      placeholder: "Search GitHub repositories",
+      className: 'repo-search-bar'
     });
   });
 

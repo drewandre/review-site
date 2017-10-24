@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import IndexSearch from './containers/IndexSearch'
+import Index from './containers/Index'
 import NavBar from './containers/NavBar'
 
 class App extends Component {
@@ -7,14 +7,17 @@ class App extends Component {
     super(props)
     this.state = {
       searchResults: [],
-      loading: false
+      loading: false,
+      emptyScreen: false,
+      error: ''
     }
 
     this.handleSearch = this.handleSearch.bind(this);
     this.loading = this.loading.bind(this);
+    this.emptyScreen = this.emptyScreen.bind(this);
+    this.error = this.error.bind(this);
+
   }
-
-
 
   handleSearch(e) {
     this.setState({ searchResults: e })
@@ -22,7 +25,14 @@ class App extends Component {
 
   loading(e) {
     this.setState({ loading: e })
-    // this.setState({ loading: !this.state.loading })
+  }
+
+  emptyScreen(e) {
+    this.setState({ emptyScreen: e })
+  }
+
+  error(e) {
+    this.setState({ error: e })
   }
 
   render() {
@@ -31,10 +41,14 @@ class App extends Component {
         <NavBar
           handleSearch={this.handleSearch}
           loading={this.loading}
+          emptyScreen={this.emptyScreen}
+          error={this.error}
         />
-        <IndexSearch
+        <Index
           searchResults={this.state.searchResults}
           loading={this.state.loading}
+          emptyScreen={this.state.emptyScreen}
+          error={this.state.error}
         />
       </nav>
     );

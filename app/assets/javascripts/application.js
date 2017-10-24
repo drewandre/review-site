@@ -14,4 +14,28 @@
 //= require jquery
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });
+
+$(document).ready(function() {
+  $('.nav-dropdown').hide();
+  $('.search-dropdown').hide();
+});
+
+$(document).ready(function() {
+  $('#account-menu').click( function(event){
+    event.stopPropagation();
+    $('.nav-dropdown').slideToggle("fast");
+    // $('.search-dropdown').hide();
+  });
+  $('#search-options').click( function(event){
+    event.stopPropagation();
+    $('.search-dropdown').slideToggle("fast");
+    // $('.nav-dropdown').hide();
+  });
+
+  // $(document).click( function(){
+  //   $('.search-dropdown').hide();
+  //   $('.nav-dropdown').hide();
+  // });
+
+});
