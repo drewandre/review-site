@@ -12,13 +12,13 @@ class ReviewContainer extends Component {
     this.addNewReview = this.addNewReview.bind(this)
   }
 
-  // componentDidMount() {
-  //   fetch('/api/v1/users/:user_slug/repos/:repo_slug/reviews/')
-  //   .then(response => response.json())
-  //   .then(body => {
-  //     this.setState({ reviews: body })
-  //   })
-  // }
+  componentDidMount() {
+    fetch('/api/v1/users/:user_slug/repos/:repo_slug/reviews/')
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ reviews: body })
+    })
+  }
 
   addNewReview(formPayload) {
     fetch('/api/v1/users/:user_slug/repos/:repo_slug/reviews/', {

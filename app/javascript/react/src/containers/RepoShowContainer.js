@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import RepoShowComponent from "../components/RepoShowComponent"
-import ReviewContainer from "../containers/ReviewContainer"
+import React, { Component } from "react";
+import RepoShowComponent from "../components/RepoShowComponent";
+import ReviewContainer from "../containers/ReviewContainer";
 
 class RepoShowContainer extends Component {
   constructor(props)  {

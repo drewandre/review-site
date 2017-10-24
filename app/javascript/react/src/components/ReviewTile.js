@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import TextInputField from './TextInputField'
-import CommentContainer from '../containers/CommentContainer'
+import React, { Component } from "react";
+import TextInputField from './TextInputField';
+import CommentContainer from '../containers/CommentContainer';
 
 class ReviewTile extends Component {
   constructor(props) {

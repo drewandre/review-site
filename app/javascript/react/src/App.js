@@ -1,9 +1,9 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import IndexPage from './containers/IndexPage'
+import IndexPage from './containers/IndexPage';
 import RepoShowContainer from './containers/RepoShowContainer';
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
 
 const App = props => (
   <div className="row">

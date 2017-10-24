@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import TextInputField from '../components/TextInputField'
+import React, { Component } from "react";
+import TextInputField from '../components/TextInputField';
 
 class CommentTile extends Component {
   constructor(props) {
@@ -18,7 +18,6 @@ class CommentTile extends Component {
   handleSubmit(e) {
     e.preventDefault();
     let formPayload = {
-      //May need to change this variable name to get this to work
       body: this.state.commentBody
     };
     this.addNewComment(formPayload);

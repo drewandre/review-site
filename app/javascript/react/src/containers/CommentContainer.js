@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import CommentTile from '../components/CommentTile'
+import React, { Component } from "react";
+import CommentTile from '../components/CommentTile';
 
 class CommentContainer extends Component {
   constructor(props) {
@@ -10,13 +10,13 @@ class CommentContainer extends Component {
     this.addNewComment = this.addNewComment.bind(this)
   }
 
-  // componentDidMount() {
-  //   fetch('/api/v1/reviews/:review_id/comments/')
-  //   .then(response => response.json())
-  //   .then(body => {
-  //     this.setState({ comments: body })
-  //   })
-  // }
+  componentDidMount() {
+    fetch('/api/v1/reviews/:review_id/comments/')
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ comments: body })
+    })
+  }
 
   addNewComment(formPayload) {
     fetch('/api/v1/reviews/:review_id/comments/', {
