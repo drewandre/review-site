@@ -4,24 +4,25 @@ import RepoTile from '../components/RepoTile'
 
 import { Circle } from 'better-react-spinkit'
 
-class IndexSearch extends Component {
+class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
       results: [],
     }
+    this.results = this.results.bind(this)
+  }
+
+  results(e) {
+    this.setState({ results: e })
   }
 
   render() {
-    let loadingStatus = null
+
     let circle = null
-
     if (this.props.loading) {
-      loadingStatus="loading icon true"
       circle = <Circle size={50} scaleEnd={1} />
-
     } else {
-      loadingStatus = ''
       circle = null
     }
 
@@ -38,4 +39,4 @@ class IndexSearch extends Component {
   }
 }
 
-export default IndexSearch;
+export default Index;
