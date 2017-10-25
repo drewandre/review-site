@@ -34,7 +34,7 @@ class SearchBar extends Component {
 
         let fullQuery = joinQuery(this.state.query, this.state.language, this.state.topic);
 
-        fetch(`http://api.github.com/search/repositories${fullQuery}&sort=stars&order=desc`)
+        fetch(`https://api.github.com/search/repositories${fullQuery}&sort=stars&order=desc`)
         .then(response => {
           if (response.ok) { return response; }
           else { throw new Error('Could not reach GitHub server!') }
