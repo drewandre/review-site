@@ -1,5 +1,6 @@
 import NavBar from '../../src/containers/NavBar';
-import SearchField from '../../src/components/SearchField';
+import SearchBar from '../../src/containers/SearchBar';
+import NavDropdown from '../../src/components/NavDropdown';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
@@ -16,15 +17,9 @@ describe('NavBar', () => {
     expect(wrapper.state()).toEqual({ results: [] });
   });
 
-  it('should render an SearchField Component', () => {
-    expect(wrapper.find(SearchField)).toBePresent();
-  });
-
-  it('should render the SearchField Component with specific props when SearchField is false', () => {
-    expect(wrapper.find(SearchField).props()).toEqual({
-      handlerFunction: jasmine.any(Function),
-      placeholder: "Search GitHub repositories",
-      className: 'repo-search-bar'
+  it('should render the NavDropdown Component with specific props', () => {
+    expect(wrapper.find(NavDropdown).props()).toEqual({
+      handleSignInOut: jasmine.any(Function)
     });
   });
 

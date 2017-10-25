@@ -326,23 +326,24 @@ nav {
   bottom: 7px;
 }
 
-.sign-in-out {
+#sign-in-out < .nav-dropdown {
   font-family: 'Menlo';
   font-style: normal;
   line-height: 1.1em;
   color: #4F4F4F;
   display: inline-block;
   position: relative;
-  bottom: 0;
-  right: 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.3)
+  bottom: 13px;
+  right: 0px;
+  height: 100%;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.sign-in-out:hover {
+#sign-in-out:hover {
   background-color: lighten(#2F2F2F, 5%);
 }
 
-.sign-in-out:active {
+#sign-in-out:active {
   background-color: lighten(#2F2F2F, 20%);
 }
 
