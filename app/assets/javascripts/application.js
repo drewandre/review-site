@@ -19,23 +19,27 @@
 $(document).ready(function() {
   $('.nav-dropdown').hide();
   $('.search-dropdown').hide();
+  $('#search').hide();
 });
 
 $(document).ready(function() {
   $('#account-menu').click( function(event){
     event.stopPropagation();
     $('.nav-dropdown').slideToggle("fast");
-    // $('.search-dropdown').hide();
   });
   $('#search-options').click( function(event){
     event.stopPropagation();
     $('.search-dropdown').slideToggle("fast");
-    // $('.nav-dropdown').hide();
   });
 
-  // $(document).click( function(){
-  //   $('.search-dropdown').hide();
-  //   $('.nav-dropdown').hide();
-  // });
+  $('#search-icon').click( function(event){
+    event.stopPropagation();
+    $('#search').slideToggle("fast");
+  });
+
+  $(document).click( function(){
+    // $('#search').hide();
+    // $('.nav-dropdown').hide();
+  });
 
 });

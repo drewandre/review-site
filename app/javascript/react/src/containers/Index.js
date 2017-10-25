@@ -22,13 +22,7 @@ class Index extends Component {
     this.state = {
       results: [],
     }
-    this.submission = this.submission.bind(this)
     this.results = this.results.bind(this)
-  }
-
-  submission(e) {
-    console.log("IndexSearch received query of = " + e.query)
-    console.log("IndexSearch received bool of = " + e.onlyReviews)
   }
 
   results(e) {
@@ -42,14 +36,6 @@ class Index extends Component {
       circle = <Circle size={50} scaleEnd={1} />
     } else {
       circle = null
-    }
-
-    let message = null;
-    if (this.props.emptyScreen) {
-      message = <div id='home-screen-title'>RepoRev</div>
-
-    } else {
-      message = null
     }
 
     return(

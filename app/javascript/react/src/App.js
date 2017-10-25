@@ -8,13 +8,13 @@ class App extends Component {
     this.state = {
       searchResults: [],
       loading: false,
-      emptyScreen: false,
+      searchMessage: '',
       error: ''
     }
 
     this.handleSearch = this.handleSearch.bind(this);
     this.loading = this.loading.bind(this);
-    this.emptyScreen = this.emptyScreen.bind(this);
+    this.searchMessage = this.searchMessage.bind(this);
     this.error = this.error.bind(this);
 
   }
@@ -27,8 +27,8 @@ class App extends Component {
     this.setState({ loading: e })
   }
 
-  emptyScreen(e) {
-    this.setState({ emptyScreen: e })
+  searchMessage(e) {
+    this.setState({ searchMessage: e })
   }
 
   error(e) {
@@ -37,20 +37,22 @@ class App extends Component {
 
   render() {
     return (
-      <nav>
-        <NavBar
-          handleSearch={this.handleSearch}
-          loading={this.loading}
-          emptyScreen={this.emptyScreen}
-          error={this.error}
-        />
+      <div>
+        <nav>
+          <NavBar
+            handleSearch={this.handleSearch}
+            loading={this.loading}
+            searchMessage={this.searchMessage}
+            error={this.error}
+          />
+        </nav>
         <Index
           searchResults={this.state.searchResults}
           loading={this.state.loading}
-          emptyScreen={this.state.emptyScreen}
+          searchMessage={this.state.searchMessage}
           error={this.state.error}
         />
-      </nav>
+      </div>
     );
   }
 }

@@ -20,81 +20,72 @@ html, body {
 }
 
 #page-title {
-  color: green;
-  float: right;
-  // margin: 20px;
-}
-
-.repo-search-bar[type="text"]:focus, textarea:focus {
-  text-indent: 12px;
-  position: fixed;
-  top: 16px;
-  left: 63px;
-  width: 75%;
-  max-width: 500px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1.2em;
-  background-color: #2F2F2F;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
-}
-
-.repo-search-bar[type="text"]:hover, textarea:hover {
-  text-indent: 12px;
-  position: fixed;
-  top: 16px;
-  left: 63px;
-  width: 75%;
-  max-width: 500px;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 1.2em;
-  background-color: #2F2F2F;
-  color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  margin-top: 12px;
+  color: #4F4F4F;
+  font-size: 2em;
+  pointer-events: none;
 }
 
 .repo-search-bar[type="text"], textarea {
   margin-right: 20px;
-  text-indent: 12px;
   position: fixed;
   top: 16px;
   left: 63px;
-  width: 75%;
+  width: 67%;
   max-width: 500px;
   border-radius: 10px;
   height: 40px;
-  font-size: 1.2em;
+  font-size: 1.15em;
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: white;
 }
 
+.repo-search-bar[type="text"]:focus, textarea:focus {
+  background-color: #2F2F2F;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.error[type="text"]:focus, textarea:focus {
+  position: fixed;
+  top: 16px;
+  left: 63px;
+  width: 67%;
+  max-width: 500px;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 1.15em;
+  background-color: #2F2F2F;
+  border: 1px solid #F45426;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+  color: white;
+}
+
+.error[type="text"], textarea {
+  border: 1px solid #4F4F4F;
+  background-color: #2F2F2F;
+  border: 1px solid #F45426;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.35);
+  color: white;
+}
+
 #reviews-not-active {
+  padding-top: 3px;
   text-align: center;
   position: relative;
   top: 3px;
   bottom: 0px;
-  left: 395px;
-  width: 150px;
+  left: 71%;
+  width: 27%;
   border-radius: 10px;
   height: 30px;
-  font-size: 1em;
+  font-size: 0.9em;
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: #666666;
 }
 
 #reviews-not-active:hover {
-  text-align: center;
-  position: relative;
-  top: 3px;
-  bottom: 0px;
-  left: 395px;
-  width: 150px;
-  border-radius: 10px;
-  height: 30px;
-  font-size: 1em;
   border: 1px solid #4F4F4F;
   border: 1px solid darken(white, 60%);
   cursor: pointer;
@@ -109,7 +100,7 @@ html, body {
   width: 150px;
   border-radius: 10px;
   height: 30px;
-  font-size: 1em;
+  font-size: 0.9em;
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: #666666;
@@ -122,26 +113,17 @@ html, body {
   position: relative;
   top: -27px;
   bottom: 27px;
-  left: 20px;
-  width: 150px;
+  left: 3%;
+  width: 35%;
   border-radius: 10px;
   height: 30px;
-  font-size: 1em;
+  font-size: 0.9em;
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: darken(white, 20%);
 }
 
 #language-filter[type="text"]:focus, textarea:focus {
-  text-align: center;
-  position: relative;
-  top: -27px;
-  bottom: 27px;
-  left: 20px;
-  width: 150px;
-  border-radius: 10px;
-  height: 30px;
-  font-size: 1em;
   border: 1px solid darken(white, 40%);
   background-color: #2F2F2F;
   color: darken(white, 20%);
@@ -152,26 +134,17 @@ html, body {
   position: relative;
   top: -73px;
   bottom: 73px;
-  left: 180px;
-  width: 200px;
+  left: 40%;
+  width: 28%;
   border-radius: 10px;
   height: 30px;
-  font-size: 1em;
+  font-size: 0.9em;
   border: 1px solid #4F4F4F;
   background-color: #2F2F2F;
   color: darken(white, 20%);
 }
 
 #topic-filter[type="text"]:focus, textarea:focus {
-  text-align: center;
-  position: relative;
-  top: -73px;
-  bottom: 73px;
-  left: 180px;
-  width: 200px;
-  border-radius: 10px;
-  height: 30px;
-  font-size: 1em;
   border: 1px solid darken(white, 40%);
   background-color: #2F2F2F;
   color: darken(white, 20%);
@@ -182,7 +155,7 @@ html, body {
   top: 14px;
   left: 63px;
   height: 40px;
-  width: 75%;
+  width: 67%;
   max-width: 500px;
   pointer-events: none;
 }
@@ -315,6 +288,14 @@ nav {
   top: calc(50% - 14.5px);
 }
 
+#search-icon {
+  cursor: pointer;
+  color: #4F4F4F;
+  position: absolute;
+  right: 20px;
+  top: calc(50% - 14.5px);
+}
+
 .fa.fa-bars.fa-2x:hover {
   color: lighten(#4F4F4F, 10%);
 }
@@ -330,12 +311,19 @@ nav {
   display: inline;
 }
 
-.user_info {
-  font-family: 'Menlo';
-  font-style: normal;
-  line-height: 1.1em;
-  color: #4F4F4F;
-  display: inline;
+#user-info {
+  // font-family: 'Menlo';
+  // font-style: normal;
+  // line-height: 1.1em;
+  // color: #4F4F4F;
+  // display: inline;
+}
+
+#user-info {
+  color: #454545;
+  position: relative;
+  left: 21px;
+  bottom: 7px;
 }
 
 .sign-in-out {
@@ -343,12 +331,11 @@ nav {
   font-style: normal;
   line-height: 1.1em;
   color: #4F4F4F;
-  padding: 17px;
-  width: 100%;
   display: inline-block;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  left: 0;
+  right: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.3)
 }
 
 .sign-in-out:hover {
@@ -380,21 +367,6 @@ nav {
   background-color: lighten(#2F2F2F, 20%);
 }
 
-.nav-dropdown {
-  color: white;
-  background-color: #2F2F2F;
-  position: absolute;
-  float: right;
-  top: 70px;
-  left: 0px;
-  width: 100%;
-  max-width: 563px;
-  height: 100px;
-  // border-left: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom-right-radius: 7px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
-}
-
 .search-dropdown {
   color: white;
   background-color: #2F2F2F;
@@ -408,9 +380,4 @@ nav {
   // border-left: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom-right-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
-}
-
-#search-switch {
-  color: #4F4F4F;
-  margin: 8px;
 }

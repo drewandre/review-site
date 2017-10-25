@@ -8,11 +8,10 @@ class NavBar extends Component {
     this.state = {
       results: []
     }
-    // this.submission = this.submission.bind(this)
     this.handleSignInOut = this.handleSignInOut.bind(this)
   }
 
-  handleSignInOut(e) {
+  handleSignInOut() {
     let sign_in_or_out, method
     if (current_user) {
       sign_in_or_out = 'sign_out'
@@ -50,20 +49,25 @@ class NavBar extends Component {
         <div onClick={this.handleAccountDropDown} id='menu-toggle'>
           <i className="fa fa-bars fa-2x" id='account-menu' aria-hidden="true"></i>
         </div>
-          <SearchBar
-            // submission={this.submission}
-            className='repo-search-bar'
-            handleSearch={this.props.handleSearch}
-            loading={this.props.loading}
-            emptyScreen={this.props.emptyScreen}
-            error={this.props.error}
-          />
-          <NavDropdown
-            handleSignInOut={this.handleSignInOut}
-          />
-          <div id='page-title'>
+        <div id='search-icon'>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
+        </div>
+
+        <div className="row">
+          <div id='page-title' className="small-5 small-centered medium-10 medium-offset-4 medium-centered large-12 large-offset-8 large-centered columns end">
             RepoRev
           </div>
+        </div>
+
+        <SearchBar
+          handleSearch={this.props.handleSearch}
+          loading={this.props.loading}
+          searchMessage={this.props.searchMessage}
+          error={this.props.error}
+        />
+        <NavDropdown
+          handleSignInOut={this.handleSignInOut}
+        />
       </div>
     );
   }

@@ -1,11 +1,12 @@
 import React from 'react';
 
 const SearchField = props => {
-  
+
   return (
     <form className="search">
       <div>
         <input
+          id={props.searchFieldId}
           className={props.className}
           autoComplete='off'
           onChange={props.handlerFunction}
