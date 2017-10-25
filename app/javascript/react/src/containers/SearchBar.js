@@ -1,99 +1,125 @@
 import React, { Component } from 'react'
 import SearchField from '../components/SearchField'
+import SearchDropdown from '../components/SearchDropdown'
+import { joinQuery } from '../helpers/SearchHelper'
 
 class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      errors: {},
       query: '',
-      // onlyReviews: false,
-      lastKeyPressedTime: 0
+      language: '',
+      topic: '',
+      onlyReviews: false,
+      lastKeyPressedTime: 0,
+      disableFields: true,
+      searchError: false
     }
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleOptions = this.handleOptions.bind(this);
+    this.handleQuery = this.handleQuery.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-    this.validateSearch = this.validateSearch.bind(this);
+    this.handleOnlyReviews = this.handleOnlyReviews.bind(this);
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
+    this.handleTopicChange = this.handleTopicChange.bind(this);
   }
 
-  handleFormSubmit(e) {
-    e.preventDefault();
+  handleFormSubmit() {
 
-    if (Date.now() - this.state.lastKeyPressedTime > 1000) {
+    if(this.state.query.trim() != '') {
 
-      let joinedQuery = "?q="
-      if(this.validateSearch(e)) {
-        joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
+      this.props.loading(true);
+      this.setState({ disableFields: false })
 
-        // let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
-        // this.props.submission(formPayLoad);
+      if (Date.now() - this.state.lastKeyPressedTime > 1000) {
 
-        fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
+        let fullQuery = joinQuery(this.state.query, this.state.language, this.state.topic);
+
+        fetch(`http://api.github.com/search/repositories${fullQuery}&sort=stars&order=desc`)
         .then(response => {
-          if (response.ok) {
-            return response;
-          } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage);
-            throw(error);
-          }
+          if (response.ok) { return response; }
+          else { throw new Error('Could not reach GitHub server!') }
         })
         .then(response => response.json())
-        .then(body => { this.props.handleSearch(body.items) })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
-        this.props.loading(false)
+        .then(body => {
+          if(body.items != '') {
+            this.props.handleSearch(body.items)
+          } else {
+            this.props.loading(false);
+            this.setState({ searchError: true })
+          }
+        })
+        .catch(error => this.props.error(error.message));
+        this.props.loading(false);
       }
-    } // end Date.now check
-  }
-
-  handleOptions(e) {
-    this.setState({ onlyReviews: !this.state.onlyReviews })
-  }
-
-  handleSearch(e) {
-    this.props.handleSearch([])
-    this.setState({ lastKeyPressedTime: Date.now() })
-    if (this.validateSearch(e.target.value)) {
-      this.setState({ query: e.target.value.toLowerCase() })
-    }
-    setTimeout(() => this.handleFormSubmit(e), 1000);
-  }
-
-  validateSearch(search) {
-    if (search === '') {
-      this.props.loading(false);
-      this.props.handleSearch([])
-      let newError = { search: 'Search field may not be blank.' }
-      this.setState({ errors: Object.assign(this.state.errors, newError) })
-      return false
     } else {
-      this.props.loading(true);
-      let errorState = this.state.errors
-      delete errorState.search
-      this.setState({ errors: errorState })
-      return true
+      this.props.loading(false);
+      this.setState({
+        topic: '',
+        language: '',
+        onlyReviews: false,
+        disableFields: true
+      })
     }
+  }
+
+  handleSearch() {
+    this.props.loading(true);
+    this.props.handleSearch([]);
+    this.setState({
+      lastKeyPressedTime: Date.now(),
+      searchError: false
+    });
+    setTimeout(() => this.handleFormSubmit(), 1000);
+  }
+
+  handleQuery(query) {
+    this.setState({ query: query.target.value.toLowerCase() });
+    this.handleSearch();
+  }
+
+  handleOnlyReviews() {
+    console.log("onlyReviews: " + this.state.onlyReviews);
+    this.handleSearch();
+  }
+
+  handleTopicChange(topic) {
+    this.setState({ topic: topic.target.value.toLowerCase() })
+    this.handleSearch();
+  }
+
+  handleLanguageChange(language) {
+    this.setState({ language: language.target.value.toLowerCase() })
+    this.handleSearch();
   }
 
   render() {
-    let errorDiv;
-    let errorItems;
-    if (Object.keys(this.state.errors).length > 0) {
-      errorItems = Object.values(this.state.errors).map(error => {
-        return(<div key={error}>{error}</div>)
-      })
-      errorDiv = <div>{errorItems}</div>
+
+    let searchFieldClass = null;
+    if(this.state.searchError) {
+      searchFieldClass='error'
+    } else {
+      searchFieldClass='repo-search-bar'
     }
 
     return(
-      // <form onSubmit={this.handleFormSubmit}>
-      <SearchField
-        handlerFunction={this.handleSearch}
-        placeholder="Search GitHub repositories"
-      />
+      <div id='search'>
+        <SearchField
+          className={searchFieldClass}
+          handlerFunction={this.handleQuery}
+          placeholder="Search GitHub repositories"
+        />
+        <SearchDropdown
+          disableField={this.state.disableFields}
+          handleOnlyReviews={this.handleOnlyReviews}
+          handleLanguageChange={this.handleLanguageChange}
+          handleTopicChange={this.handleTopicChange}
+          onlyReviews={this.state.onlyReviews}
+          topic={this.state.topic}
+          language={this.state.language}
+        />
+      </div>
     );
   }
-
 }
 
 export default SearchBar;
