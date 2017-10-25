@@ -382,3 +382,25 @@ nav {
   border-bottom-right-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
+
+.review-container {
+  background-color: red;
+}
+.repo-show-component {
+  width: 60%;
+  height: 50%;
+  border-radius: 10px;
+  background-color: grey;
+}
+
+.comments-container {
+  background-color: green;
+}
+
+.repo-show-container {
+  background-color: lightgrey;
+}
+
+.individual-review {
+  margin: 50px;
+}

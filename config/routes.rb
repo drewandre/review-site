@@ -30,4 +30,6 @@ Rails.application.routes.draw do
       #get ":user_slug/:repo_slug/reviews/:id/comments", to: ""
     end
   end
+
+  get "*path", to: "search#index"
 end

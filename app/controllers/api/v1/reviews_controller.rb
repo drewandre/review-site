@@ -8,7 +8,13 @@ class Api::V1::ReviewsController < ApplicationController
       repo_slug: repo_slug
     )
 
-    @reviews = @repo.reviews
+    if @repo
+      @reviews = @repo.reviews.map do |review|
+        {user: review.user.as_json}.merge(review.as_json)
+      end
+    else
+      @reviews = []
+    end
 
     render json: @reviews
   end
