@@ -4,7 +4,7 @@ import CommentContainer from "../containers/CommentContainer"
 
 const ReviewTile = props => {
   return (
-    <div>
+    <div className="comment-container">
       <div className="review-tile">
         <span className="rating">
           <i className="fa fa-star" aria-hidden="true"></i> {props.rating}

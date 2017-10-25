@@ -10,7 +10,7 @@ class Api::V1::ReviewsController < ApplicationController
       repo_slug: repo_slug
     )
 
-    @reviews = @repo.reviews
+    @reviews = @repo&.reviews || []
 
     if current_user
       @reviews = @reviews.map { |review| review.with_user_vote(current_user) }

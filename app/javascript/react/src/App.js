@@ -1,28 +1,48 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ReviewContainer from './containers/ReviewContainer'
+import IndexPage from './containers/IndexPage'
+import NavBar from "./containers/NavBar"
+import IndexSearch from "./containers/IndexSearch"
+import RepoShowPage from "./containers/RepoShowPage"
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      searchResults: [],
+      loading: false
     }
-    this.submission = this.submission.bind(this)
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.loading = this.loading.bind(this);
   }
 
-  submission(e) {
+  handleSearch(event) {
+    this.setState({ searchResults: event })
+  }
 
-    // this.setState({ data: this.state.data.concat(e.query) })
-    console.log("App received query of = " + e.query)
-    console.log("App received bool of = " + e.onlyReviews)
+  loading(event) {
+    this.setState({ loading: event })
+    // this.setState({ loading: !this.state.loading })
   }
 
   render() {
     return (
-      <div className="row">
-        <div className="medium-8 medium-offset-2 small-12 columns">
-          <h1 className="text-center">RepoRev</h1>
-          <ReviewContainer />
+      <div>
+        <nav>
+          <NavBar
+            handleSearch={this.handleSearch}
+            loading={this.loading}
+          />
+        </nav>
+        <div className="row">
+          <div className="small-10 small-offset-1 columns">
+            <IndexSearch
+              searchResults={this.state.searchResults}
+              loading={this.state.loading}
+            />
+            <RepoShowPage userSlug="zerovolts" repoSlug="gitquest" />
+          </div>
         </div>
       </div>
     );

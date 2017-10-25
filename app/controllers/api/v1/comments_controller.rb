@@ -1,4 +1,6 @@
 class Api::V1::CommentsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
+
   def index
     review = Review.find(params[:review_id])
     render json: review.comments

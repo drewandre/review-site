@@ -1,5 +1,6 @@
 import React from "react"
 import CommentTile from "../components/CommentTile"
+import CommentForm from "../components/CommentForm"
 
 class CommentContainer extends React.Component {
   constructor(props) {
@@ -11,13 +12,15 @@ class CommentContainer extends React.Component {
 
     this.loadComments = this.loadComments.bind(this)
     this.showComments = this.showComments.bind(this)
+    this.addComment = this.addComment.bind(this)
   }
 
-  addComment(review_id) {
-    fetch(`http://localhost:3000/api/v1/reviews/${review_id}/comments`, {
+  addComment(formPayload) {
+    fetch(`http://localhost:3000/api/v1/reviews/${this.props.reviewId}/comments.json`, {
       credentials: "same-origin",
       method: "POST",
-      headers: {"Content-Type": "application/json"}
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(formPayload)
     }).then(() => {
       this.loadComments()
     })
@@ -57,6 +60,7 @@ class CommentContainer extends React.Component {
       commentArea = (
         <div>
           {comments}
+          <CommentForm addComment={this.addComment} />
           <div className="show-comments">
             <a onClick={this.showComments}>Hide Comments</a>
           </div>
