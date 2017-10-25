@@ -1,6 +1,6 @@
 import IndexPage from '../../src/containers/IndexPage';
 import NavBar from '../../src/containers/NavBar';
-import IndexSearch from '../../src/containers/IndexSearch';
+import Index from '../../src/containers/Index';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
@@ -21,8 +21,8 @@ describe('IndexPage', () => {
     expect(wrapper.find(NavBar)).toBePresent();
   });
 
-  it('should render an IndexSearch Component', () => {
-    expect(wrapper.find(IndexSearch)).toBePresent();
+  it('should render an Index Component', () => {
+    expect(wrapper.find(Index)).toBePresent();
   });
 
 });

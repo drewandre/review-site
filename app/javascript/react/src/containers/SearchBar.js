@@ -8,16 +8,12 @@ class SearchBar extends Component {
     super(props)
     this.state = {
       query: '',
-<<<<<<< HEAD
-      lastKeyPressedTime: 0
-=======
       language: '',
       topic: '',
       onlyReviews: false,
       lastKeyPressedTime: 0,
       disableFields: true,
       searchError: false
->>>>>>> master
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleQuery = this.handleQuery.bind(this);
@@ -27,12 +23,7 @@ class SearchBar extends Component {
     this.handleTopicChange = this.handleTopicChange.bind(this);
   }
 
-<<<<<<< HEAD
-  handleFormSubmit(event) {
-    event.preventDefault();
-=======
   handleFormSubmit() {
->>>>>>> master
 
     if(this.state.query.trim() != '') {
 
@@ -41,13 +32,9 @@ class SearchBar extends Component {
 
       if (Date.now() - this.state.lastKeyPressedTime > 1000) {
 
-<<<<<<< HEAD
-        fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
-=======
         let fullQuery = joinQuery(this.state.query, this.state.language, this.state.topic);
 
         fetch(`http://api.github.com/search/repositories${fullQuery}&sort=stars&order=desc`)
->>>>>>> master
         .then(response => {
           if (response.ok) { return response; }
           else { throw new Error('Could not reach GitHub server!') }
@@ -64,22 +51,6 @@ class SearchBar extends Component {
         .catch(error => this.props.error(error.message));
         this.props.loading(false);
       }
-<<<<<<< HEAD
-    }
-  }
-
-  handleOptions() {
-    this.setState({ onlyReviews: !this.state.onlyReviews })
-  }
-
-  handleSearch(event) {
-    this.props.handleSearch([])
-    this.setState({ lastKeyPressedTime: Date.now() })
-    if (this.validateSearch(event.target.value)) {
-      this.setState({ query: event.target.value.toLowerCase() })
-    }
-    setTimeout(() => this.handleFormSubmit(event), 1000);
-=======
     } else {
       this.props.loading(false);
       this.setState({
@@ -104,7 +75,6 @@ class SearchBar extends Component {
   handleQuery(query) {
     this.setState({ query: query.target.value.toLowerCase() });
     this.handleSearch();
->>>>>>> master
   }
 
   handleOnlyReviews() {
@@ -132,12 +102,6 @@ class SearchBar extends Component {
     }
 
     return(
-<<<<<<< HEAD
-      <SearchField
-        handlerFunction={this.handleSearch}
-        placeholder="Search GitHub repositories"
-      />
-=======
       <div id='search'>
         <SearchField
           className={searchFieldClass}
@@ -154,7 +118,6 @@ class SearchBar extends Component {
           language={this.state.language}
         />
       </div>
->>>>>>> master
     );
   }
 }

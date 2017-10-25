@@ -48,13 +48,6 @@ class NavBar extends Component {
         <div id='search-icon'>
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
-<<<<<<< HEAD
-          <SearchBar
-            handleSearch={this.props.handleSearch}
-            loading={this.props.loading}
-          />
-        {dropdown}
-=======
 
         <div className="row">
           <div id='page-title' className="small-5 small-centered medium-10 medium-offset-4 medium-centered large-12 large-offset-8 large-centered columns end">
@@ -71,7 +64,6 @@ class NavBar extends Component {
         <NavDropdown
           handleSignInOut={this.handleSignInOut}
         />
->>>>>>> master
       </div>
     );
   }

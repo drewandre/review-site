@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IndexSearch from './IndexSearch';
+import Index from './Index';
 import NavBar from './NavBar';
 
 class IndexPage extends Component {
@@ -31,7 +31,7 @@ class IndexPage extends Component {
             loading={this.loading}
           />
         </nav>
-        <IndexSearch
+        <Index
           searchResults={this.state.searchResults}
           loading={this.state.loading}
         />

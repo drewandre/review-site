@@ -1,15 +1,15 @@
-import IndexSearch from '../../src/containers/IndexSearch';
+import Index from '../../src/containers/Index';
 import RepoTile from '../../src/components/RepoTile';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 
-describe('IndexSearch', () => {
+describe('Index', () => {
   let wrapper;
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = mount(<IndexSearch />);
+    wrapper = mount(<Index />);
   });
 
   // it('should should have the specified initial state', () => {
