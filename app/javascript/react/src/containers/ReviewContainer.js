@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import CommentContainer from './CommentContainer'
-import ReviewTile from '../components/ReviewTile'
+import ReviewTile from '../containers/ReviewTile'
 import TextInputField from '../components/TextInputField'
 
 class ReviewContainer extends Component {

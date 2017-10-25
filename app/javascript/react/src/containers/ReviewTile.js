@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TextInputField from './TextInputField';
+import TextInputField from '../components/TextInputField';
 import CommentContainer from '../containers/CommentContainer';
 
 class ReviewTile extends Component {

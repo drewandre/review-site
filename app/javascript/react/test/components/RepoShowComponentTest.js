@@ -11,7 +11,8 @@ describe('RepoShowComponent', () => {
   });
 
   // it('should render one a element', () => {
-  //   expect(wrapper.find('a')).toBePresent();
+  //   // console.log(wrapper.debug())
+  //   // expect(wrapper.find('a')).toBePresent();
   // });
 
 })
