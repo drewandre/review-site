@@ -44,4 +44,6 @@ Rails.application.routes.draw do
       post "reviews/:review_id/comments", to: "comments#create"
     end
   end
+
+  get "*path", to: "search#index"
 end

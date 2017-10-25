@@ -4,7 +4,7 @@ import { getLanguageColor, prettifyStars } from "../helpers/languageColors"
 const RepoTile = props => {
   let repos = props.searchResults.map(repo => {
     let key = repo.id
-    let repoName = repo.full_name
+    let repoName = repo.name
     let repoApiUrl = repo.url
     let repoDescription = repo.description
     let repoLanguage = repo.language

@@ -6,20 +6,12 @@ class NavBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: [],
-      dropdown: false
+      results: []
     }
-    // this.submission = this.submission.bind(this)
     this.handleSignInOut = this.handleSignInOut.bind(this)
-    this.handleAccountDropDown = this.handleAccountDropDown.bind(this);
-
   }
 
-  handleAccountDropDown(e) {
-    this.setState({ dropdown: !this.state.dropdown })
-  }
-
-  handleSignInOut(e) {
+  handleSignInOut() {
     let sign_in_or_out, method
     if (current_user) {
       sign_in_or_out = 'sign_out'
@@ -51,26 +43,31 @@ class NavBar extends Component {
   }
 
   render(){
-    let dropdown
-    if(this.state.dropdown) {
-      dropdown = <NavDropdown
-        handleSignInOut={this.handleSignInOut}
-      />
-    } else {
-      dropdown = null
-    }
 
     return (
       <div>
         <div onClick={this.handleAccountDropDown} id='menu-toggle'>
-          <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
+          <i className="fa fa-bars fa-2x" id='account-menu' aria-hidden="true"></i>
         </div>
-          <SearchBar
-            // submission={this.submission}
-            handleSearch={this.props.handleSearch}
-            loading={this.props.loading}
-          />
-        {dropdown}
+        <div id='search-icon'>
+          <i className="fa fa-search fa-2x" aria-hidden="true"></i>
+        </div>
+
+        <div className="row">
+          <div id='page-title' className="small-5 small-centered medium-10 medium-offset-4 medium-centered large-12 large-offset-8 large-centered columns end">
+            RepoRev
+          </div>
+        </div>
+
+        <SearchBar
+          handleSearch={this.props.handleSearch}
+          loading={this.props.loading}
+          searchMessage={this.props.searchMessage}
+          error={this.props.error}
+        />
+        <NavDropdown
+          handleSignInOut={this.handleSignInOut}
+        />
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from "react"
+
 import { getLanguageColor } from "../helpers/languageColors"
 
 const RepoShowComponent = props => {

@@ -1,8 +1,8 @@
-import React from "react"
-import NavBar from "./NavBar"
-import IndexSearch from "./IndexSearch"
+import React, { Component } from 'react';
+import Index from './Index';
+import NavBar from './NavBar';
 
-class IndexPage extends React.Component {
+class IndexPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,13 +14,12 @@ class IndexPage extends React.Component {
     this.loading = this.loading.bind(this);
   }
 
-  handleSearch(e) {
-    this.setState({ searchResults: e })
+  handleSearch(event) {
+    this.setState({ searchResults: event })
   }
 
-  loading(e) {
-    this.setState({ loading: e })
-    // this.setState({ loading: !this.state.loading })
+  loading(event) {
+    this.setState({ loading: event })
   }
 
   render() {
@@ -32,7 +31,7 @@ class IndexPage extends React.Component {
             loading={this.loading}
           />
         </nav>
-        <IndexSearch
+        <Index
           searchResults={this.state.searchResults}
           loading={this.state.loading}
         />
@@ -41,4 +40,4 @@ class IndexPage extends React.Component {
   }
 }
 
-export default IndexPage
+export default IndexPage;
