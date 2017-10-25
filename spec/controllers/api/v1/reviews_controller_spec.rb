@@ -8,7 +8,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     Repo.create(
       user_slug: "zerovolts",
       repo_slug: "gitquest",
-      average_rating: 3.2
+      average_rating: 3.2,
+      fork: false
     )
   end
 

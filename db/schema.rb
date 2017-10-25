@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171018181718) do
+ActiveRecord::Schema.define(version: 20171023144534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,19 +45,28 @@ ActiveRecord::Schema.define(version: 20171018181718) do
   end
 
   create_table "repos", force: :cascade do |t|
-    t.float "average_rating", null: false
+    t.float "average_rating"
     t.integer "total_reviews", default: 0, null: false
-    t.string "example_url"
+    t.text "description", default: "", null: false
+    t.string "language"
+    t.integer "size"
+    t.string "homepage"
+    t.boolean "fork", null: false
+    t.date "last_update"
+    t.integer "forks_count"
+    t.integer "open_issues_count"
+    t.integer "subscribers_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_slug"
     t.string "repo_slug"
+    t.index ["user_slug", "repo_slug"], name: "index_repos_on_user_slug_and_repo_slug", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "repo_id", null: false
     t.bigint "user_id", null: false
-    t.integer "rating", null: false
+    t.float "rating", null: false
     t.text "body", null: false
     t.integer "upvotes", default: 0, null: false
     t.integer "downvotes", default: 0, null: false
@@ -87,17 +96,25 @@ ActiveRecord::Schema.define(version: 20171018181718) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.string "name"
+    t.text "bio"
+    t.string "location"
+    t.string "blog"
+    t.string "avatar_url"
+    t.integer "public_repos"
+    t.integer "followers"
+    t.integer "following"
+    t.string "github_url"
+    t.string "reporev_url"
+    t.index ["login"], name: "index_users_on_login", unique: true
   end
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "review_id", null: false
-    t.bigint "comment_id", null: false
-    t.boolean "upvoted", null: false
+    t.boolean "upvoted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_votes_on_comment_id"
     t.index ["review_id"], name: "index_votes_on_review_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end

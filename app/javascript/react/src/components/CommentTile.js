@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 
 const CommentTile = props => {
   return (
-    <div>
+    <div className="comment-tile">
       {props.body}
     </div>
   )

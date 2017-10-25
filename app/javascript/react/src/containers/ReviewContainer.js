@@ -1,64 +1,117 @@
-import React, { Component } from "react"
-import CommentContainer from './CommentContainer'
-import ReviewTile from '../containers/ReviewTile'
-import TextInputField from '../components/TextInputField'
+import React from "react"
+import ReviewTile from "../components/ReviewTile"
+import ReviewForm from "../components/ReviewForm"
 
-class ReviewContainer extends Component {
+const voteFetch = (review_id, method, fetchReviews) => {
+  fetch(`http://localhost:3000/api/v1/reviews/${review_id}/${method}.json`, {
+    credentials: "same-origin",
+    method: "POST",
+    headers: {"Content-Type": "application/json"}
+  }).then(() => {
+    fetchReviews()
+  })
+}
+
+class ReviewContainer extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      reviews:[]
+      userSlug: props.userSlug,
+      repoSlug: props.repoSlug,
+      reviews: []
     }
-    this.addNewReview = this.addNewReview.bind(this)
+
+    this.handleUpvote = this.handleUpvote.bind(this)
+    this.handleDownvote = this.handleDownvote.bind(this)
+    this.fetchReviews = this.fetchReviews.bind(this)
+    this.addReview = this.addReview.bind(this)
   }
 
   componentDidMount() {
-    fetch('/api/v1/users/:user_slug/repos/:repo_slug/reviews/')
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ reviews: body })
+    this.fetchReviews()
+  }
+
+  addReview(formPayload) {
+    fetch(`http://localhost:3000/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(formPayload)
+    }).then(() => {
+      this.fetchReviews()
+      this.props.loadRepository()
     })
   }
 
-  addNewReview(formPayload) {
-    fetch('/api/v1/users/:user_slug/repos/:repo_slug/reviews/', {
-      method: 'POST',
-      body: JSON.stringify(formPayload)
-    })
-    .then(response => reponse.json)
-    .then(responseData => {
-      this.setState({ reviews: [...this.state.reviews, responseData] })
-    })
+  fetchReviews() {
+    fetch(`http://localhost:3000/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}
+    }).then(res => res.json())
+      .then(data => {
+        this.setState({
+          reviews: data.sort((a, b) => a.rating < b.rating)
+        })
+      })
+  }
+
+  handleUpvote(id) {
+    let review = this.state.reviews.find(review => review.id == id)
+    if (review.user_vote != true) {
+      voteFetch(id, "upvote", this.fetchReviews)
+    } else {
+      this.handleUnvote(id)
+    }
+  }
+
+  handleDownvote(id) {
+    let review = this.state.reviews.find(review => review.id == id)
+    if (review.user_vote != false) {
+      voteFetch(id, "downvote", this.fetchReviews)
+    } else {
+      this.handleUnvote(id)
+    }
+  }
+
+  handleUnvote(id) {
+    voteFetch(id, "unvote", this.fetchReviews)
+  }
+
+  // unused
+  fetchReview(id) {
+    fetch(`http://localhost:3000/api/v1/reviews/${id}.json`, {
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}
+    }).then(res => res.json())
+      .then(data => {
+        this.setState({
+          data: data
+        })
+      })
   }
 
   render() {
-    let reviews = this.state.reviews.map(review => {
-      return(
-        <div className='individual-review'>
-          <hr></hr>
-          <ReviewTile
-            key={review.id}
-            id={review.id}
-            body={review.body}
-          />
-        </div>
-      )
-    })
+    let reviews = this.state.reviews.map(review =>
+      <ReviewTile
+        id={review.id}
+        key={review.id}
+        data={review}
+        rating={review.rating}
+        body={review.body}
+        handleUpvote={() => this.handleUpvote(review.id)}
+        handleDownvote={() => this.handleDownvote(review.id)}
+      />
+    )
 
-    return(
-      <div className='review-container'>
+    let reviewForm = null
+    if (this.props.showNewReview) {
+      reviewForm = <ReviewForm addReview={this.addReview} />
+    }
+
+    return (
+      <div>
+        {reviewForm}
         {reviews}
-          <form className='review-tile'>
-            <TextInputField
-              content={this.state.reviewBody}
-              label= "Review"
-              name="review"
-              handleChange={this.handleTextInputField}
-            />
-            <div>
-              <input className="button" type="submit" value="Submit" onClick={this.handleSubmit}/>
-            </div>
-          </form>
       </div>
     )
   }

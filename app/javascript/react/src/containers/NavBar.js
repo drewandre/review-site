@@ -22,7 +22,11 @@ class NavBar extends Component {
     }
 
     fetch(`/users/${sign_in_or_out}`, {
-      method: `${method}`
+      method: method
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // },
+      // body: JSON.stringify(content)
     })
 
     .then(response => {

@@ -15,8 +15,83 @@
  *= require foundation_and_overrides
  */
 
-html, body {
-  background-color: darken(white, 20%);
+body, h1, h2, h3, h4, h5 {
+  color: #444;
+  font-family: Ubuntu;
+}
+
+.review-tile {
+  background: #eee;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 0em;
+  margin-bottom: 0.2em;
+}
+
+.vote {
+  user-select: none;
+  cursor: pointer;
+  border-radius: 0.3em;
+  margin: 0.2em;
+  padding: 0.2em 0.5em;
+  background: #fff;
+  //border: 1px solid #aaa;
+}
+
+.upvoted {
+  background: #bdf0d2;
+  //border: 1px solid #27ae60;
+}
+
+.downvoted {
+  background: #f8c9c4;
+  //border: 1px solid #c0392b;
+}
+
+.fa-thumbs-up {
+  color: #2ecc71;
+}
+
+.fa-thumbs-down {
+  color: #e74c3c;
+}
+
+.rating {
+  background: #fff;
+  border-radius: 0.3em;
+  margin: 0.2em;
+  padding: 0.2em 0.5em;
+  //border: 1px solid #aaa;
+}
+
+.fa-star {
+  color: #f1c40f;
+}
+
+.review-body {
+  margin: 1em 0.2em 0.2em 0.2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
+}
+
+.comment-container {
+  margin: 2em 1em;
+  border-radius: 0.3em;
+  background: #ddd;
+}
+
+.show-comments {
+  padding: 0.2em;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.comment-tile {
+  background: #fff;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 1em 3em;
 }
 
 #page-title {
@@ -180,7 +255,7 @@ html, body {
   line-height: 1em;
   padding: 1em;
   border-radius: 8px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+  //box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
 
 .truncate {
@@ -222,7 +297,7 @@ a.repo-link {
   padding-left: 8px;
   padding-top: 5px;
   padding-bottom: 3px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #fff;
 }
 
 .centered {
@@ -381,6 +456,20 @@ nav {
   // border-left: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom-right-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
+}
+
+.repo-show {
+  background: #eee;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 0em;
+}
+
+.repo-description {
+  margin: 1em 0.2em 0.2em 0.2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
 }
 
 .review-container {

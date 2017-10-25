@@ -1,55 +1,83 @@
-import React, { Component } from "react";
-import CommentTile from '../components/CommentTile';
+import React from "react"
+import CommentTile from "../components/CommentTile"
+import CommentForm from "../components/CommentForm"
 
-class CommentContainer extends Component {
+class CommentContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      comments:[]
+      comments: null,
+      showComments: false
     }
-    this.addNewComment = this.addNewComment.bind(this)
+
+    this.loadComments = this.loadComments.bind(this)
+    this.showComments = this.showComments.bind(this)
+    this.addComment = this.addComment.bind(this)
   }
 
-  componentDidMount() {
-    fetch('/api/v1/reviews/:review_id/comments/')
-    .then(response => response.json())
-    .then(body => {
-      this.setState({ comments: body })
-    })
-  }
-
-  addNewComment(formPayload) {
-    fetch('/api/v1/reviews/:review_id/comments/', {
-      method: 'POST',
+  addComment(formPayload) {
+    fetch(`http://localhost:3000/api/v1/reviews/${this.props.reviewId}/comments.json`, {
+      credentials: "same-origin",
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(formPayload)
+    }).then(() => {
+      this.loadComments()
     })
-    .then(response => reponse.json)
-    .then(responseData => {
-      this.setState({ comments: [...this.state.comments, responseData] })
+  }
+
+  loadComments() {
+    fetch(`http://localhost:3000/api/v1/reviews/${this.props.reviewId}/comments.json`, {
+      credentials: "same-origin",
+      headers: {"Content-Type": "application/json"}
+    }).then(res => res.json())
+      .then(data => {
+        this.setState({
+          comments: data
+        })
+      })
+  }
+
+  showComments() {
+    if (this.state.comments == null) {
+      this.loadComments()
+    }
+    this.setState({
+      showComments: !this.state.showComments
     })
   }
 
   render() {
-    let addNewComment=(formPayload) => this.addNewComment(formPayload)
-
-    let comments = this.state.comments.map(comment => {
-
-      return(
-        <CommentTile
-          key={comment.id}
-          id={comment.id}
-          body={comment.body}
-        />
+    let comments;
+    if (this.state.comments) {
+      comments = this.state.comments.map(comment =>
+        <CommentTile key={comment.id} body={comment.body} />
       )
-    })
+    }
 
-    return(
-      <div>
-        {comments}
-      </div>
+    let commentArea;
+    if (this.state.showComments) {
+      commentArea = (
+        <div>
+          {comments}
+          <CommentForm addComment={this.addComment} />
+          <div className="show-comments">
+            <a onClick={this.showComments}>Hide Comments</a>
+          </div>
+        </div>
+      )
+    } else {
+      commentArea = (
+        <div className="show-comments">
+          <a onClick={this.showComments}>Show Comments</a>
+        </div>
+      )
+    }
+
+    return (
+      commentArea
     )
   }
 }
 
-
-export default CommentContainer;
+export default CommentContainer

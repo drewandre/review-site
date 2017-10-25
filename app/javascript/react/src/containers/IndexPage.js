@@ -36,7 +36,7 @@ class IndexPage extends Component {
           loading={this.state.loading}
         />
       </div>
-    );
+    )
   }
 }
 
