@@ -16,7 +16,7 @@ class CommentContainer extends React.Component {
   }
 
   addComment(formPayload) {
-    fetch(`http://localhost:3000/api/v1/reviews/${this.props.reviewId}/comments.json`, {
+    fetch(`/api/v1/reviews/${this.props.reviewId}/comments.json`, {
       credentials: "same-origin",
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -27,7 +27,7 @@ class CommentContainer extends React.Component {
   }
 
   loadComments() {
-    fetch(`http://localhost:3000/api/v1/reviews/${this.props.reviewId}/comments.json`, {
+    fetch(`/api/v1/reviews/${this.props.reviewId}/comments.json`, {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     }).then(res => res.json())

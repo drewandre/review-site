@@ -33,6 +33,3 @@ class ReviewTile extends Component {
 }
 
 export default ReviewTile;
-
-
-//API to post to: "/api/v1/users/:user_slug/repos/:repo_slug/reviews/"

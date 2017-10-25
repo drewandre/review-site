@@ -13,12 +13,11 @@ class Index extends Component {
     this.results = this.results.bind(this)
   }
 
-  results(e) {
-    this.setState({ results: e })
+  results(event) {
+    this.setState({ results: event })
   }
 
   render() {
-
     let circle = null
     if (this.props.loading) {
       circle = <Circle size={50} scaleEnd={1} />

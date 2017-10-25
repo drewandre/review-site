@@ -9,7 +9,6 @@ class RepoShowContainer extends Component {
       repo: {},
       reviews: []
     }
-
   }
 
   fetchRepoData(user, repo) {
@@ -39,17 +38,18 @@ class RepoShowContainer extends Component {
   }
 
   render() {
+    const params = this.props.match.params
 
     return(
       <div>
         <div className="repo-show-container">
           <RepoShowComponent
+            userSlug={params.user_slug}
+            repoSlug={params.repo_slug}
             id={this.state.repo.id}
             repo={this.state.repo}
           />
-          <ReviewContainer
-            reviews={this.state.reviews}
-          />
+          <ReviewContainer userSlug={params.user_slug} repoSlug={params.repo_slug} />
         </div>
       </div>
     )

@@ -15,7 +15,7 @@ class RepoShowPage extends React.Component {
   }
 
   loadRepository() {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userSlug}/repos/${this.props.repoSlug}.json`, {
+    fetch(`/api/v1/users/${this.props.userSlug}/repos/${this.props.repoSlug}.json`, {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     }).then(res => res.json())
