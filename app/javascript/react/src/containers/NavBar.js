@@ -9,17 +9,10 @@ class NavBar extends Component {
       results: [],
       dropdown: false
     }
-    // this.submission = this.submission.bind(this)
     this.handleSignInOut = this.handleSignInOut.bind(this)
-    this.handleAccountDropDown = this.handleAccountDropDown.bind(this);
-
   }
 
-  handleAccountDropDown(e) {
-    this.setState({ dropdown: !this.state.dropdown })
-  }
-
-  handleSignInOut(e) {
+  handleSignInOut() {
     let sign_in_or_out, method
     if (current_user) {
       sign_in_or_out = 'sign_out'
@@ -31,10 +24,6 @@ class NavBar extends Component {
 
     fetch(`/users/${sign_in_or_out}`, {
       method: `${method}`
-      // headers: {
-      //   'Content-Type': 'application/json'
-      // },
-      // body: JSON.stringify(content)
     })
 
     .then(response => {
@@ -67,7 +56,6 @@ class NavBar extends Component {
           <i className="fa fa-bars fa-2x" aria-hidden="true"></i>
         </div>
           <SearchBar
-            // submission={this.submission}
             handleSearch={this.props.handleSearch}
             loading={this.props.loading}
           />

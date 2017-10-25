@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NavDropdown = props => {
-  
+
   return (
     <div className='nav-dropdown'>
       <div id='account-dropdown'>
@@ -14,9 +14,6 @@ const NavDropdown = props => {
           Sign out (link)
         </div>
       </div>
-      {/* <div id='nav-alert'>
-        <i className="fa fa-bell-o fa-2x" aria-hidden="true"></i>
-      </div> */}
     </div>
   );
 }

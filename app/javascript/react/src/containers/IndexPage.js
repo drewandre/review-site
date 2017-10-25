@@ -14,29 +14,28 @@ class IndexPage extends Component {
     this.loading = this.loading.bind(this);
   }
 
-
-
-  handleSearch(e) {
-    this.setState({ searchResults: e })
+  handleSearch(event) {
+    this.setState({ searchResults: event })
   }
 
-  loading(e) {
-    this.setState({ loading: e })
-    // this.setState({ loading: !this.state.loading })
+  loading(event) {
+    this.setState({ loading: event })
   }
 
   render() {
     return (
-      <nav>
-        <NavBar
-          handleSearch={this.handleSearch}
-          loading={this.loading}
-        />
+      <div>
+        <nav>
+          <NavBar
+            handleSearch={this.handleSearch}
+            loading={this.loading}
+          />
+        </nav>
         <IndexSearch
           searchResults={this.state.searchResults}
           loading={this.state.loading}
         />
-      </nav>
+      </div>
     );
   }
 }

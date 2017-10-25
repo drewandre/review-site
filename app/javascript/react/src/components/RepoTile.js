@@ -13,9 +13,6 @@ const RepoTile = props => {
 
     repoStarCount = repoStarCount > 999 ? (repoStarCount/1000).toFixed(1) + 'k' : repoStarCount
 
-    // find_language_color(repoLanguage);
-    // thousands_to_k(repoStars)
-
     switch (repoLanguage) {
     case 'Arduino':
       languageColor={color: '#BB7CCF'}

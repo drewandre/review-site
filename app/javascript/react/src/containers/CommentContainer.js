@@ -3,7 +3,7 @@ import CommentTile from '../components/CommentTile';
 
 class CommentContainer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       comments:[]
     }
@@ -30,7 +30,7 @@ class CommentContainer extends Component {
   }
 
   render() {
-    // let addNewComment=(formPayload) => this.addNewComment(formPayload)
+    let addNewComment=(formPayload) => this.addNewComment(formPayload)
 
     let comments = this.state.comments.map(comment => {
 
@@ -38,16 +38,13 @@ class CommentContainer extends Component {
         <CommentTile
           key={comment.id}
           id={comment.id}
-          body="test"
-          body={comment}
-          addNewComment={this.addNewComment}
+          body={comment.body}
         />
       )
     })
 
     return(
       <div>
-        List of comment tiles from comment container
         {comments}
       </div>
     )
@@ -55,4 +52,4 @@ class CommentContainer extends Component {
 }
 
 
-export default CommentContainer
+export default CommentContainer;

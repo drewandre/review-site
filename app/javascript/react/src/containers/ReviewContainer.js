@@ -32,22 +32,16 @@ class ReviewContainer extends Component {
   }
 
   render() {
-
-    // let addNewReview=(formPayload) => this.addNewReview(formPayload)
-
     let reviews = this.state.reviews.map(review => {
-
       return(
         <div className='individual-review'>
           <hr></hr>
           <ReviewTile
             key={review.id}
             id={review.id}
-            // body={review.body}
-            body={review}
+            body={review.body}
           />
         </div>
-
       )
     })
 
@@ -69,6 +63,5 @@ class ReviewContainer extends Component {
     )
   }
 }
-
 
 export default ReviewContainer

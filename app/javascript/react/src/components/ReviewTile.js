@@ -11,15 +11,14 @@ class ReviewTile extends Component {
     this.handleTextInputField = this.handleTextInputField.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleTextInputField(e) {
-    console.log("input detected" + e);
-    this.setState({ reviewBody: e.target.value })
+  handleTextInputField(event) {
+    console.log("input detected" + event);
+    this.setState({ reviewBody: event.target.value })
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     let formPayload = {
-      //May need to change this variable name to get this to work
       body: this.state.reviewBody
     };
     this.addNewReview(formPayload);

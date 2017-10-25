@@ -7,7 +7,6 @@ class SearchBar extends Component {
     this.state = {
       errors: {},
       query: '',
-      // onlyReviews: false,
       lastKeyPressedTime: 0
     }
     this.handleSearch = this.handleSearch.bind(this);
@@ -16,17 +15,14 @@ class SearchBar extends Component {
     this.validateSearch = this.validateSearch.bind(this);
   }
 
-  handleFormSubmit(e) {
-    e.preventDefault();
+  handleFormSubmit(event) {
+    event.preventDefault();
 
     if (Date.now() - this.state.lastKeyPressedTime > 1000) {
 
       let joinedQuery = "?q="
       if(this.validateSearch(e)) {
         joinedQuery+=this.state.query.split(' ').map(word => `${word.trim()}`).join('+');
-
-        // let formPayLoad = { query: joinedQuery, onlyReviews: this.state.onlyReviews };
-        // this.props.submission(formPayLoad);
 
         fetch(`http://api.github.com/search/repositories${joinedQuery}&sort=stars&order=desc`)
         .then(response => {
@@ -43,20 +39,20 @@ class SearchBar extends Component {
         .catch(error => console.error(`Error in fetch: ${error.message}`));
         this.props.loading(false)
       }
-    } // end Date.now check
+    }
   }
 
-  handleOptions(e) {
+  handleOptions() {
     this.setState({ onlyReviews: !this.state.onlyReviews })
   }
 
-  handleSearch(e) {
+  handleSearch(event) {
     this.props.handleSearch([])
     this.setState({ lastKeyPressedTime: Date.now() })
-    if (this.validateSearch(e.target.value)) {
-      this.setState({ query: e.target.value.toLowerCase() })
+    if (this.validateSearch(event.target.value)) {
+      this.setState({ query: event.target.value.toLowerCase() })
     }
-    setTimeout(() => this.handleFormSubmit(e), 1000);
+    setTimeout(() => this.handleFormSubmit(event), 1000);
   }
 
   validateSearch(search) {
@@ -86,7 +82,6 @@ class SearchBar extends Component {
     }
 
     return(
-      // <form onSubmit={this.handleFormSubmit}>
       <SearchField
         handlerFunction={this.handleSearch}
         placeholder="Search GitHub repositories"

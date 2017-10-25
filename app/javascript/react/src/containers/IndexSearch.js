@@ -2,19 +2,7 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar'
 import RepoTile from '../components/RepoTile'
 
-import {
-  ChasingDots,
-  Circle,
-  CubeGrid,
-  DoubleBounce,
-  FadingCircle,
-  FoldingCube,
-  Pulse,
-  RotatingPlane,
-  ThreeBounce,
-  WanderingCubes,
-  Wave
-} from 'better-react-spinkit'
+import { Circle } from 'better-react-spinkit'
 
 class IndexSearch extends Component {
   constructor(props) {
@@ -22,25 +10,9 @@ class IndexSearch extends Component {
     this.state = {
       results: [],
     }
-    this.submission = this.submission.bind(this)
-    this.results = this.results.bind(this)
-
-  }
-
-  submission(e) {
-    // this.setState({ data: this.state.data.concat(e) })
-    console.log("IndexSearch received query of = " + e.query)
-    console.log("IndexSearch received bool of = " + e.onlyReviews)
-  }
-
-  results(e) {
-    this.setState({ results: e })
-    // console.log("IndexSearch received this first result name: " + e[0].name)
-    // console.log("IndexSearch results state: " + this.state.results);
   }
 
   render() {
-
     let loadingStatus = null
     let circle = null
 
