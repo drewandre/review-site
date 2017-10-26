@@ -78,8 +78,10 @@ class SearchBar extends Component {
   }
 
   handleOnlyReviews() {
-    console.log("onlyReviews: " + this.state.onlyReviews);
-    this.handleSearch();
+    // disabled at the moment
+    
+    // console.log("onlyReviews: " + this.state.onlyReviews);
+    // this.handleSearch();
   }
 
   handleTopicChange(topic) {

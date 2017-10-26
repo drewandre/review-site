@@ -5,19 +5,33 @@ const NavDropdown = props => {
   if (props.currentUser) {
     dropdown = (
       <div id="account-dropdown">
-        <div className="user_info">
-          <div href="https://google.com" className="dropdown-item">{props.currentUser.name}</div>
-        </div>
-        <div onClick={props.handleSignOut} className="dropdown-item">
-          Sign out
+        <a href={`/${props.currentUser.login}`}>
+          <div className="dropdown-item">
+            <img src={`${props.currentUser.avatar_url}`} alt={`${props.currentUser.name} profile photo`} className='profile-icon' />
+            <div className='user-info'>
+                {props.currentUser.name}
+              <div id='user-handle'>
+                {props.currentUser.login}
+              </div>
+            </div>
+          </div>
+        </a>
+        <a href='/'>
+          <div className="dropdown-item" id='home'>Home</div>
+        </a>
+        <div onClick={props.handleSignOut}>
+          <div className="dropdown-item" id='sign-in-out'>Sign out</div>
         </div>
       </div>
     )
   } else {
     dropdown = (
       <div id="account-dropdown">
-        <div onClick={props.handleSignIn} className="dropdown-item">
-          Sign In
+        <a href='/'>
+          <div className="dropdown-item" id='home'>Home</div>
+        </a>
+        <div onClick={props.handleSignOut}>
+          <div className="dropdown-item" id='sign-in-out'>Sign out</div>
         </div>
       </div>
     )

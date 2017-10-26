@@ -28,8 +28,14 @@ class UserShowPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.state.user.name}</h1>
+      <div className="profile-show">
+        <img src={`${this.state.user.avatar_url}`} alt={`${this.state.user.name} profile photo`} className='profile-icon-large' />
+        <div className='user-show-page-name'>
+          <h2><a href={this.state.user.github_url}>{this.state.user.name}</a></h2>
+        </div>
+        <br />
+        <div className="repo-description">{this.state.user.bio}</div>
+        <br />
       </div>
     )
   }
