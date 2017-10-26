@@ -59,10 +59,6 @@ class NavBar extends Component {
 
     fetch(`/users/${sign_in_or_out}`, {
       method: method
-      // headers: {
-      //   "Content-Type": "application/json"
-      // },
-      // body: JSON.stringify(content)
     })
 
     .then(response => {
@@ -79,7 +75,7 @@ class NavBar extends Component {
   }
 
   render(){
-
+    console.log(this.state.currentUser);
     return (
       <div>
         <div onClick={this.handleAccountDropDown} id="menu-toggle">

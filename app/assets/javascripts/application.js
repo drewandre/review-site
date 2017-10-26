@@ -34,7 +34,7 @@ $(document).ready(function() {
 
   $('#search-icon').click( function(event){
     event.stopPropagation();
-    $('#search').slideToggle("fast");
+    $('#search').fadeToggle();
   });
 
   $(document).click( function(){

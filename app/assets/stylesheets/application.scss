@@ -339,8 +339,8 @@ nav {
   background-color: #2F2F2F;
   position: absolute;
   top: 70px;
-  // width: 100%;
-  width: 563px;
+  width: 100%;
+  max-width: 563px;
   border-bottom-right-radius: 7px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .1);
 }
@@ -387,63 +387,6 @@ nav {
 
 .fa.fa-user.fa-2x {
   display: inline;
-}
-
-#user-info {
-  // font-family: 'Menlo';
-  // font-style: normal;
-  // line-height: 1.1em;
-  // color: #4F4F4F;
-  // display: inline;
-}
-
-#user-info {
-  color: #454545;
-  position: relative;
-  left: 21px;
-  bottom: 7px;
-}
-
-#sign-in-out {
-  font-family: 'Menlo';
-  font-style: normal;
-  line-height: 1.1em;
-  color: #4F4F4F;
-  display: inline-block;
-  position: relative;
-  bottom: 13px;
-  right: 0px;
-  height: 100%;
-  border-left: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-#sign-in-out:hover {
-  background-color: lighten(#2F2F2F, 5%);
-}
-
-#sign-in-out:active {
-  background-color: lighten(#2F2F2F, 20%);
-}
-
-.view-profile {
-  font-family: 'Menlo';
-  font-style: normal;
-  line-height: 1.1em;
-  color: #4F4F4F;
-  padding: 17px;
-  width: 100%;
-  // display: inline-block;
-  position: absolute;
-  bottom: 20;
-  left: 0;
-}
-
-.view-profile:hover {
-  background-color: lighten(#2F2F2F, 5%);
-}
-
-.view-profile:active {
-  background-color: lighten(#2F2F2F, 20%);
 }
 
 .search-dropdown {
@@ -500,10 +443,53 @@ nav {
 .dropdown-item {
   user-select: none;
   cursor: pointer;
-  padding: 1em;
+  padding-bottom: 0.7em;
+  padding-left: 0.7em;
   border-radius: 0.4em;
 }
 
 .dropdown-item:hover {
   background: lighten(#2F2F2F, 5%);
+}
+
+
+.profile-icon {
+  margin-right: 15px;
+  // border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 45px;
+  width: 45px;
+}
+
+.user-info {
+  display: inline-block;
+  position: relative;
+  top: 12px;
+}
+
+#user-handle {
+  color: #4F4F4F;
+  font-style: italic;
+}
+
+#sign-in-out {
+  padding-top: 0.7em;
+  color: #4F4F4F;
+}
+
+
+// div.overlay {
+//     position: fixed;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//     background: #000;
+//     opacity: 0.5;
+//     filter: alpha(opacity = 50); /* required for opacity to work in IE */
+// }
+
+.profile-container {
+  
 }
