@@ -38,9 +38,13 @@ class Api::V1::ReviewsController < ApplicationController
       @repo = Repo.save_from_github(params[:user_slug], params[:repo_slug])
     end
     @review.repo = @repo
-    @review.save
 
-    @repo.recalculate_rating
+
+    @existing_reviews = Review.where(repo: @repo, user: current_user)
+    if @existing_reviews == []
+      @review.save
+      @repo.recalculate_rating
+    end
 
     render json: @review
   end

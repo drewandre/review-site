@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171023144534) do
   create_table "repos", force: :cascade do |t|
     t.float "average_rating"
     t.integer "total_reviews", default: 0, null: false
-    t.text "description", default: "", null: false
+    t.text "description", default: ""
     t.string "language"
     t.integer "size"
     t.string "homepage"
