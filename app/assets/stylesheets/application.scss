@@ -80,12 +80,12 @@ body, h1, h2, h3, h4, h5 {
 .centered-div-text {
   position: relative;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
 }
 
-.review-tile {
+.review-tile.row {
   background: #eee;
-  border-radius: 0.3em;
+  border-radius: 0.3em 0.3em 0em 0em;
   padding: 1em;
   margin: 0em;
   margin-bottom: 0.2em;
@@ -150,11 +150,11 @@ body, h1, h2, h3, h4, h5 {
   text-align: center;
 }
 
-.comment-tile {
-  background: #fff;
+.comment-tile.row {
+  background: #eee;
   border-radius: 0.3em;
   padding: 1em;
-  margin: 1em 3em;
+  margin: 1em 2em;
 }
 
 // a.page-title {
@@ -502,6 +502,7 @@ nav {
 .review-container {
   background-color: red;
 }
+
 .repo-show-component {
   width: 60%;
   height: 50%;
@@ -531,6 +532,71 @@ nav {
 
 .dropdown-item:hover {
   background: lighten(#2F2F2F, 5%);
+}
+
+.user-box {
+  text-align: center;
+}
+
+.user-box img {
+  border-radius: 0.25em;
+  width: 96px;
+}
+
+.user-box img {
+  border-radius: 0.25em;
+  width: 64px;
+}
+
+.column {
+  padding: 0em;
+}
+
+.user-photo {
+  display: inline-block;
+  width: 96px;
+  height: 96px;
+  background: #ddd;
+  border-radius: 0.3em;
+}
+
+.user-photo-comment {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  background: #ddd;
+  border-radius: 0.3em;
+}
+
+input.review-form {
+  margin: 1em 0.2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+input.comment-form {
+  margin: 0em;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+button {
+  border-radius: 0.3em;
+  padding: 0.8em;
+}
+
+.comment-body {
+  margin: 0em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  background: #fff;
 }
 
 .profile-icon {

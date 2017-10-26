@@ -51,7 +51,7 @@ class CommentContainer extends React.Component {
     let comments;
     if (this.state.comments) {
       comments = this.state.comments.map(comment =>
-        <CommentTile key={comment.id} body={comment.body} />
+        <CommentTile data={comment} key={comment.id} body={comment.body} />
       )
     }
 
