@@ -50,7 +50,7 @@ class ReviewContainer extends React.Component {
     }).then(res => res.json())
       .then(data => {
         this.setState({
-          reviews: data.sort((a, b) => a.rating < b.rating)
+          reviews: data.sort((a, b) => a.created_at < b.created_at)
         })
       })
   }

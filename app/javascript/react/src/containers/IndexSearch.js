@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import SearchBar from './SearchBar'
-import RepoTile from '../components/RepoTile'
+import React, { Component } from "react"
+import SearchBar from "./SearchBar"
+import RepoTile from "../components/RepoTile"
 
-import { Circle } from 'better-react-spinkit'
+import { Circle } from "better-react-spinkit"
 
 class IndexSearch extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class IndexSearch extends Component {
       circle = <Circle size={50} scaleEnd={1} />
 
     } else {
-      loadingStatus = ''
+      loadingStatus = ""
       circle = null
     }
 

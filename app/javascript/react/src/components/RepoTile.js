@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { getLanguageColor, prettifyStars } from "../helpers/languageColors"
 
 const RepoTile = props => {
@@ -10,14 +10,14 @@ const RepoTile = props => {
     let repoLanguage = repo.language
     let repoStarCount = prettifyStars(repo.stargazers_count)
     let languageColor = getLanguageColor(repoLanguage)
-    const repoUrl = `${repo.owner.login}/${repo.name}`
+    const repoUrl = `/${repo.owner.login}/${repo.name}`
 
     return (
       <div key={key} className="repo-tile">
         <a className="repo-link" href={repoUrl}>{repoName}</a>
 
         <div className="repo-icon">
-          <i className="fa fa-star" aria-hidden="true"></i> {repoStarCount}
+          <i className="fa fa-heart" aria-hidden="true"></i> {repoStarCount}
         </div>
 
         <div className="repo-icon">
@@ -34,7 +34,6 @@ const RepoTile = props => {
       {repos}
     </div>
   );
-
 }
 
 export default RepoTile;

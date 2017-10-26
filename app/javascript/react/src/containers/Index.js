@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import SearchBar from './SearchBar'
-import RepoTile from '../components/RepoTile'
+import React, { Component } from "react"
+import SearchBar from "./SearchBar"
+import RepoTile from "../components/RepoTile"
 
-import { Circle } from 'better-react-spinkit'
+import { Circle } from "better-react-spinkit"
 
 class Index extends Component {
   constructor(props) {

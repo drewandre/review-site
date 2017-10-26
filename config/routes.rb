@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :repos, only: [:index]
       resources :reviews, only: [:index, :show]
 
+      get "/current-user", to: "users#user"
+
       # all repos for one user (from GitHub)
       get "users/:user_slug/repos", to: "repos#user_repos_index"
 
