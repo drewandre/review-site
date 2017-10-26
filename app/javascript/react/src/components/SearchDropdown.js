@@ -2,12 +2,12 @@ import React from "react";
 
 const SearchDropdown = props => {
 
-  let buttonState;
-  if (props.onlyReviews) {
-    buttonState = "reviews-active"
-  } else {
-    buttonState = "reviews-not-active"
-  }
+  let buttonState='reviews-not-active';
+  // if (props.onlyReviews) {
+  //   buttonState = "reviews-active"
+  // } else {
+  //   buttonState = "reviews-not-active"
+  // }
 
   return (
     <div className="search-dropdown">

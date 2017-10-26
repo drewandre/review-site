@@ -75,7 +75,6 @@ class NavBar extends Component {
   }
 
   render(){
-    console.log(this.state.currentUser);
     return (
       <div>
         <div onClick={this.handleAccountDropDown} id="menu-toggle">
@@ -85,11 +84,11 @@ class NavBar extends Component {
           <i className="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
 
-        <div className="row">
-          <div id="page-title" className="small-5 small-centered medium-10 medium-offset-4 medium-centered large-12 large-offset-8 large-centered columns end">
-            RepoRev
-          </div>
-        </div>
+        <a href='/'>
+          <div className='page-title'>RepoRev</div>
+        </a>
+
+        <img src='/app/assets/images/launch-logo.png' />
 
         <SearchBar
           handleSearch={this.props.handleSearch}

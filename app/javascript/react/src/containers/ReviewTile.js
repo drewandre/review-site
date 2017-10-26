@@ -12,7 +12,6 @@ class ReviewTile extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleTextInputField(event) {
-    console.log("input detected" + event);
     this.setState({ reviewBody: event.target.value })
   }
 
