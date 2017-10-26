@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Index from './Index';
-import NavBar from './NavBar';
+import React, { Component } from "react";
+import Index from "./Index";
+import NavBar from "./NavBar";
 
 class IndexPage extends Component {
   constructor(props) {

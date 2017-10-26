@@ -1,5 +1,6 @@
 import CommentContainer from '../../src/containers/CommentContainer';
-import { shallow  } from 'enzyme';
+import CommentTile from '../../src/components/CommentTile';
+import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 
@@ -8,15 +9,11 @@ describe('CommentContainer', () => {
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = shallow(<CommentContainer /> );
+    wrapper = mount(<CommentContainer /> );
   });
 
-  // it('should should have the specified initial state', () => {
-  //   expect(wrapper.state()).toEqual({ comments: [] });
-  // });
-
-  // it('should render an CommentContainer', () => {
-  //   expect(wrapper.find(CommentContainer)).toBePresent();
-  // });
+  it('should should have the specified initial state', () => {
+    expect(wrapper.state()).toEqual({ comments: null, showComments: false });
+  });
 
 });

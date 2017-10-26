@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import TextInputField from '../components/TextInputField';
-import CommentContainer from '../containers/CommentContainer';
+import TextInputField from "../components/TextInputField";
+import CommentContainer from "../containers/CommentContainer";
 
 class ReviewTile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      reviewBody: ''
+      reviewBody: ""
     }
     this.handleTextInputField = this.handleTextInputField.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +25,7 @@ class ReviewTile extends Component {
   }
   render() {
     return(
-        <div className='comments-container'>
+        <div className="comments-container">
           <CommentContainer />
         </div>
     )
@@ -33,6 +33,3 @@ class ReviewTile extends Component {
 }
 
 export default ReviewTile;
-
-
-//API to post to: "/api/v1/users/:user_slug/repos/:repo_slug/reviews/"

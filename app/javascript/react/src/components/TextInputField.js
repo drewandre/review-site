@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TextInputField = props => {
   return(
@@ -6,7 +6,7 @@ const TextInputField = props => {
       <input
         onChange={props.handleChange}
         name={props.name}
-        type='text'
+        type="text"
         value={props.value}
       />
     </div>

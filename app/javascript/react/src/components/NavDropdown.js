@@ -1,21 +1,34 @@
-import React from 'react';
+import React from "react";
 
 const NavDropdown = props => {
-
-  return (
-    <div className='nav-dropdown'>
-      <div id='account-dropdown'>
-        <i className="fa fa-user fa-2x" aria-hidden="true"></i>
-        <div className='user_info' >
-          <div>Drew André</div>
-          <div>drew@gmail.com</div>
+  let dropdown
+  if (props.currentUser) {
+    dropdown = (
+      <div id="account-dropdown">
+        <div className="user_info">
+          <div href="https://google.com" className="dropdown-item">{props.currentUser.name}</div>
         </div>
-        <div onClick={props.handleSignInOut} className='sign-out'>
-          Sign out (link)
+        <div onClick={props.handleSignOut} className="dropdown-item">
+          Sign out
         </div>
       </div>
+    )
+  } else {
+    dropdown = (
+      <div id="account-dropdown">
+        <div onClick={props.handleSignIn} className="dropdown-item">
+          Sign In
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="nav-dropdown">
+      {dropdown}
     </div>
-  );
+  )
 }
+//<i className="fa fa-user fa-2x" aria-hidden="true"></i>
 
 export default NavDropdown;

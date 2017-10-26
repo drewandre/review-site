@@ -7,7 +7,9 @@ class RepoShowPage extends React.Component {
     super(props)
     this.state = {
       repo: {},
-      showNewReview: false
+      showNewReview: false,
+      userSlug: props.match.params.user_slug,
+      repoSlug: props.match.params.repo_slug
     }
 
     this.loadRepository = this.loadRepository.bind(this)
@@ -15,7 +17,7 @@ class RepoShowPage extends React.Component {
   }
 
   loadRepository() {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userSlug}/repos/${this.props.repoSlug}.json`, {
+    fetch(`/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}.json`, {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     }).then(res => res.json())
@@ -37,7 +39,6 @@ class RepoShowPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.repo)
     return (
       <div>
         <RepoShowComponent
@@ -47,8 +48,8 @@ class RepoShowPage extends React.Component {
         />
         <hr />
         <ReviewContainer
-          userSlug={this.props.userSlug}
-          repoSlug={this.props.repoSlug}
+          userSlug={this.state.userSlug}
+          repoSlug={this.state.repoSlug}
           showNewReview={this.state.showNewReview}
           loadRepository={this.loadRepository}
         />

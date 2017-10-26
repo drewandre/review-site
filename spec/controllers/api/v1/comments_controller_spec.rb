@@ -43,17 +43,4 @@ RSpec.describe Api::V1::CommentsController, type: :controller do
       expect(data).to have_content "I agree with this"
     end
   end
-
-  xdescribe "POST#create" do
-    it "should create a new comment on a specified repository" do
-      session[:user_id] = User.first.id
-      post :create, params: {review_id: Review.first.id, body: "This is good!"}
-      data = JSON.parse(response.body)
-
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq("application/json")
-
-      expect(data).to have_content "Comment saved successfully!"
-    end
-  end
 end

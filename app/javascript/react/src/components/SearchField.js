@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const SearchField = props => {
 
@@ -8,13 +8,13 @@ const SearchField = props => {
         <input
           id={props.searchFieldId}
           className={props.className}
-          autoComplete='off'
+          autoComplete="off"
           onChange={props.handlerFunction}
-          type='text'
+          type="text"
           placeholder={props.placeholder}
         />
-        <div id='test-icon'>
-          <i className="fa fa-sort-desc fa-2x" id='search-options' aria-hidden="true"></i>
+        <div id="test-icon">
+          <i className="fa fa-sort-desc fa-2x" id="search-options" aria-hidden="true"></i>
         </div>
       </div>
     </form>

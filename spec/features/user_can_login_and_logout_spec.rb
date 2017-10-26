@@ -48,20 +48,3 @@ def set_invalid_omniauth(opts = {})
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[credentials[:provider]] = credentials[:invalid]
 end
-
-feature "user can login and logout" do
-
-  scenario "user logs in and out" do
-    set_omniauth()
-
-    visit "/"
-    expect(page).to have_link "Sign in"
-
-    click_link "Sign in"
-    expect(page).to have_content "zerovolts"
-    expect(page).to have_link "Sign out"
-
-    click_link "Sign out"
-    expect(page).to have_link "Sign in"
-  end
-end

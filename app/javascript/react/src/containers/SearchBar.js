@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import SearchField from '../components/SearchField'
-import SearchDropdown from '../components/SearchDropdown'
-import { joinQuery } from '../helpers/SearchHelper'
+import React, { Component } from "react"
+import SearchField from "../components/SearchField"
+import SearchDropdown from "../components/SearchDropdown"
+import { joinQuery } from "../helpers/SearchHelper"
 
 class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      query: '',
-      language: '',
-      topic: '',
+      query: "",
+      language: "",
+      topic: "",
       onlyReviews: false,
       lastKeyPressedTime: 0,
       disableFields: true,
@@ -25,7 +25,7 @@ class SearchBar extends Component {
 
   handleFormSubmit() {
 
-    if(this.state.query.trim() != '') {
+    if(this.state.query.trim() != "") {
 
       this.props.loading(true);
       this.setState({ disableFields: false })
@@ -37,11 +37,11 @@ class SearchBar extends Component {
         fetch(`https://api.github.com/search/repositories${fullQuery}&sort=stars&order=desc`)
         .then(response => {
           if (response.ok) { return response; }
-          else { throw new Error('Could not reach GitHub server!') }
+          else { throw new Error("Could not reach GitHub server!") }
         })
         .then(response => response.json())
         .then(body => {
-          if(body.items != '') {
+          if(body.items != "") {
             this.props.handleSearch(body.items)
           } else {
             this.props.loading(false);
@@ -54,8 +54,8 @@ class SearchBar extends Component {
     } else {
       this.props.loading(false);
       this.setState({
-        topic: '',
-        language: '',
+        topic: "",
+        language: "",
         onlyReviews: false,
         disableFields: true
       })
@@ -96,13 +96,13 @@ class SearchBar extends Component {
 
     let searchFieldClass = null;
     if(this.state.searchError) {
-      searchFieldClass='error'
+      searchFieldClass="error"
     } else {
-      searchFieldClass='repo-search-bar'
+      searchFieldClass="repo-search-bar"
     }
 
     return(
-      <div id='search'>
+      <div id="search">
         <SearchField
           className={searchFieldClass}
           handlerFunction={this.handleQuery}

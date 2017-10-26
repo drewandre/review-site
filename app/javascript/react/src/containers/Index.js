@@ -1,24 +1,23 @@
-import React, { Component } from 'react'
-import SearchBar from './SearchBar'
-import RepoTile from '../components/RepoTile'
+import React, { Component } from "react"
+import SearchBar from "./SearchBar"
+import RepoTile from "../components/RepoTile"
 
-import { Circle } from 'better-react-spinkit'
+import { Circle } from "better-react-spinkit"
 
 class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: [],
+      results: []
     }
     this.results = this.results.bind(this)
   }
 
-  results(e) {
-    this.setState({ results: e })
+  results(event) {
+    this.setState({ results: event })
   }
 
   render() {
-
     let circle = null
     if (this.props.loading) {
       circle = <Circle size={50} scaleEnd={1} />

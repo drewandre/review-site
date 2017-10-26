@@ -3,7 +3,7 @@ import ReviewTile from "../components/ReviewTile"
 import ReviewForm from "../components/ReviewForm"
 
 const voteFetch = (review_id, method, fetchReviews) => {
-  fetch(`http://localhost:3000/api/v1/reviews/${review_id}/${method}.json`, {
+  fetch(`/api/v1/reviews/${review_id}/${method}.json`, {
     credentials: "same-origin",
     method: "POST",
     headers: {"Content-Type": "application/json"}
@@ -32,7 +32,7 @@ class ReviewContainer extends React.Component {
   }
 
   addReview(formPayload) {
-    fetch(`http://localhost:3000/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
+    fetch(`/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
       credentials: "same-origin",
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -44,13 +44,13 @@ class ReviewContainer extends React.Component {
   }
 
   fetchReviews() {
-    fetch(`http://localhost:3000/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
+    fetch(`/api/v1/users/${this.state.userSlug}/repos/${this.state.repoSlug}/reviews.json`, {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     }).then(res => res.json())
       .then(data => {
         this.setState({
-          reviews: data.sort((a, b) => a.rating < b.rating)
+          reviews: data.sort((a, b) => a.created_at < b.created_at)
         })
       })
   }
@@ -79,7 +79,7 @@ class ReviewContainer extends React.Component {
 
   // unused
   fetchReview(id) {
-    fetch(`http://localhost:3000/api/v1/reviews/${id}.json`, {
+    fetch(`/api/v1/reviews/${id}.json`, {
       credentials: "same-origin",
       headers: {"Content-Type": "application/json"}
     }).then(res => res.json())
