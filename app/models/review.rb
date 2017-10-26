@@ -24,4 +24,8 @@ class Review < ApplicationRecord
     vote = self.votes.find_by(user: user)&.upvoted
     self.as_json.merge(user_vote: vote)
   end
+
+  def as_json(options = {})
+    super(methods: :user)
+  end
 end

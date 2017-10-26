@@ -3,7 +3,7 @@ class CreateRepos < ActiveRecord::Migration[5.1]
     create_table :repos do |t|
       t.float :average_rating
       t.integer :total_reviews, null: false, default: 0
-      t.text :description, null: false, default: ""
+      t.text :description, default: ""
       t.string :language
       t.integer :size
       t.string :homepage
