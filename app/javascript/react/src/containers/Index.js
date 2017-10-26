@@ -8,7 +8,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: [],
+      results: []
     }
     this.results = this.results.bind(this)
   }

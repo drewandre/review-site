@@ -1,6 +1,6 @@
 import ReviewContainer from '../../src/containers/ReviewContainer';
 import TextInputField from '../../src/components/TextInputField';
-import { mount  } from 'enzyme';
+import { shallow } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 
@@ -9,15 +9,11 @@ describe('ReviewContainer', () => {
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = mount(<ReviewContainer /> );
+    wrapper = shallow(<ReviewContainer /> );
   });
 
-  // it('should render an TextInputField', () => {
-  //   expect(wrapper.find(TextInputField)).toBePresent();
-  // });
-
-  // it('should should have the specified initial state', () => {
-  //   expect(wrapper.state()).toEqual({ reviews: [] });
-  // });
+  it('should should have the specified initial state', () => {
+    expect(wrapper.state()).toEqual({ userSlug: undefined, repoSlug: undefined, reviews: [] });
+  });
 
 });

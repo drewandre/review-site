@@ -16,7 +16,7 @@ describe('SearchBar', () => {
   it('should should have the specified initial state', () => {
     expect(wrapper.state()).toEqual({
       query: '',
-      lastKeyPressedTime: 0 ,
+      lastKeyPressedTime: 0,
       language: '',
       topic: '',
       onlyReviews: false,
