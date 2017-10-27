@@ -15,17 +15,19 @@ const RepoTile = props => {
 
     return (
       <div key={key} className="repo-tile">
-        <a className="repo-link" href={repoUrl}>{repoName}</a>
+        <div>
+          <a className="repo-link" href={repoUrl}>{repoName}</a>
 
-        <div className="repo-icon">
-          <i className="fa fa-heart" aria-hidden="true"></i> {repoStarCount}
+          <div className="repo-icon">
+            <i className="fa fa-heart" aria-hidden="true"></i> {repoStarCount}
+          </div>
+
+          <div className="repo-icon">
+            <i className="fa fa-circle" style={{color: languageColor}} aria-hidden="true"></i> {repoLanguage}
+          </div>
         </div>
-
-        <div className="repo-icon">
-          <i className="fa fa-circle" style={{color: languageColor}} aria-hidden="true"></i> {repoLanguage}
-        </div>
-
-        <p className="truncate">{repoDescription}</p>
+        <br />
+        <div className="truncate">{repoDescription}</div>
       </div>
     );
   });

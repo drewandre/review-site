@@ -22,7 +22,7 @@ class Index extends Component {
         <RepoTile
           searchResults={this.props.searchResults}
         />
-        <hr />
+        <i className="fa fa-ellipsis-h fa-2x" id='centered-ellipses' aria-hidden="true"></i>
       </div>
     );
   }

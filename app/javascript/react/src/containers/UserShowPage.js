@@ -18,7 +18,6 @@ class UserShowPage extends React.Component {
       credentials: "same-origin"
     }).then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({
           user: data
         })

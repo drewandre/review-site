@@ -38,6 +38,7 @@ const RepoShowComponent = props => {
       <a href={props.repo.github_url}><strong>{props.repo.repo_slug}</strong></a>
       </h2>
       {ratingTag} {languageTag} <span className="rating">{props.repo.total_reviews || 0} reviews</span>
+      {props.repo.homepage ? <a href={props.repo.homepage}> {props.repo.repo_slug} Website</a> : null}
       <br />
       <div className="repo-description">{props.repo.description}</div>
       <br />
