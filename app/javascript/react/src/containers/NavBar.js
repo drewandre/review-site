@@ -88,8 +88,6 @@ class NavBar extends Component {
           <div className='page-title'>RepoRev</div>
         </a>
 
-        <img src='/app/assets/images/launch-logo.png' />
-
         <SearchBar
           handleSearch={this.props.handleSearch}
           loading={this.props.loading}
