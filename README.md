@@ -22,6 +22,16 @@ Reviews may be voted on by many users. Users can also leave comments under revie
 * [Marcus Boyd](https://github.com/Marcus-boyd)
 * [Ted Cook](https://github.com/CaptainAngus)
 
+## How to use:
+```
+git clone https://github.com/drewandre/reporev.git
+rake db:create
+rake db:migrate
+rails s
+./bin/webpacker-dev-server
+http://localhost:3000/
+```
+
 ## Features
 * Users may search for an existing GitHub repository
 * Each user can add 1 review per repository
