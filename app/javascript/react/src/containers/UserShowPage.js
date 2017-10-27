@@ -48,7 +48,8 @@ class UserShowPage extends React.Component {
         <img src={`${this.state.user.avatar_url}`} alt={`${this.state.user.name} profile photo`} className='profile-icon-large' />
         <div className='user-show-page-name'>
           <h2><a href={this.state.user.github_url || this.state.user.html_url}>{this.state.user.name}</a></h2>
-          <h5>Followers: {`${this.state.user.followers}`} - Following: {`${this.state.user.following}`}</h5>
+          <span className="vote">Followers : {`${this.state.user.followers}`}</span>
+          <span className="vote">Following : {`${this.state.user.following}`}</span>
         </div>
         <br />
         <div className="repo-description">{this.state.user.bio}</div>
