@@ -1,4 +1,4 @@
-# README
+# RepoRev
 
 
 <span>[ ![Codeship Status for drewandre/reporev](https://app.codeship.com/projects/3a1278a0-94b9-0135-3636-26f9e1beef69/status?branch=master)](https://app.codeship.com/projects/251025)</span>
@@ -10,49 +10,31 @@
 <span>![Coverage Status](https://coveralls.io/repos/drewandre/reporev/badge.png)
 </span>
 
-PostgreSQL ER Diagram:
-http://bit.ly/2ilNga0
-<p>Wireframes:
-https://drive.google.com/open?id=0B5NAdgcdVEEZa2FMOEF1ZDFRamM</p>
+Reporev is a GitHub repository review app built wit Ruby on Rails and React.
+This was created because GitHub does not allow users to review a repository.
+Reviews may be voted on by many users. Users can also leave comments under reviews.
 
-User stories:
-As a user I want to be able to sign up through github or log in
+[RepoRev Website](https://reporev.herokuapp.com)
 
-As a user I want to see the highest rated/most rated repos on the home page
+## Contributors
+* [Zach Stone](https://github.com/zerovolts)
+* [Drew Andre](https://github.com/drewandre)
+* [Marcus Boyd](https://github.com/Marcus-boyd)
+* [Ted Cook](https://github.com/CaptainAngus)
 
-As a user I want to be able to search for a repository and view a list of those results on the same (index) page
+## Features
+* Users may search for an existing GitHub repository
+* Each user can add 1 review per repository
+* A review consist of a body and a rating from 1-5
+* Users can vote on each review
+* Users can add multiple comments to each review
+* Users can see a profile page for each user
+* Each profile page shows a users Name, their followers, who they are following, a bio, and an avatar picture
 
-On the index page, search results should display the average rating, number of ratings, and brief description of repo
-
-On the show page, the repo name should link to the github profile for that repo
-
-On the show page I want to see a more detailed description, quick infographics of version number, primary language, number of forks/downloads, 
-
-On the show page I want to be able to see a section of user-submitted repo alternatives
-
-On the show page I want to be able to expand the comments section
-
-On the show page I want to be able to expand each comment if there is media/links/code attached
-
-As a user I want to be able to leave a review (must include rating, body is optional) and comment and up/down vote on other reviews
-
-As a user I want to be able to view other user’s profiles and view my own as well
-
-As a user I want to be able to share a review from the review show page
-
-As a user and a owner of a repo I want to receive an email when my repo is commented on
-
-As an admin I want to be able to log in through github
-
-As an admin I want to be able to delete reviews
-
-Notes:
-** URL routes will match those of github’s (our-site.com/user/repo-name)
-** general activity meter -- icon shows if there has been a commit within past few days hours or something
-** if up/down vote ratio isn’t favorable, don’t factor rating into average
-** user can keep up-to-date with a repo on our page? Notifications of comments?
-Users may want to be notified of replies to their comments
-** suggest users review repositories that they have starred on github
-** helpful/least helpful
-** specify version number (sort reviews by version? Give those reviews less weight?)
-** check off different boxes to filter searches
+## Technologies
+* User Functionality made with Devise
+* User information imported from GitHub using Omni Auth
+* Model testing with Rspec
+* Feature testing with enzyme
+* Styling framework with foundation and CSS
+* Deployment on Heroku 
