@@ -474,6 +474,8 @@ a.repo-link {
   background-color: #FFFFFF;
   z-index: 980;
   position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
   animation-name: slide_down;
   animation-duration: 1s;
