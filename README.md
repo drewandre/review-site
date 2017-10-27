@@ -22,7 +22,7 @@ Reviews may be voted on by many users. Users can also leave comments under revie
 * [Marcus Boyd](https://github.com/Marcus-boyd)
 * [Ted Cook](https://github.com/CaptainAngus)
 
-## How to use:
+## Download instructions:
 ```
 git clone https://github.com/drewandre/reporev.git
 rake db:create
