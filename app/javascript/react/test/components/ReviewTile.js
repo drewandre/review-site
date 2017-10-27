@@ -2,7 +2,7 @@ import ReviewTile from '../../src/components/ReviewTile';
 import VoteBox from '../../src/components/VoteBox';
 import CommentContainer from '../../src/containers/CommentContainer';
 
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
 
@@ -11,21 +11,15 @@ describe('ReviewTile', () => {
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = shallow(<ReviewTile /> );
+    wrapper = mount(<ReviewTile /> );
   });
 
-  it('should render the VoteBox Component with specific props', () => {
-    expect(wrapper.find(VoteBox).props()).toEqual({
-      data: undefined,
-      upvote: undefined,
-      downvote: undefined
-    });
-  });
-
-  it('should render the CommentContainer Component with specific props', () => {
-    expect(wrapper.find(CommentContainer).props()).toEqual({
-      reviewId: undefined
-    });
-  });
+  // it('should render the VoteBox Component with specific props', () => {
+  //   expect(wrapper.find(VoteBox).props()).toEqual({
+  //     data: '',
+  //     upvote: jasmine.any(Function),
+  //     downvote: jasmine.any(Function)
+  //   });
+  // });
 
 });

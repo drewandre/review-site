@@ -6,7 +6,7 @@ class UserShowPage extends React.Component {
     super(props)
     this.state = {
       userSlug: props.match.params.user_slug,
-      user: [],
+      user: {},
       userRepos: []
     }
     this.fetchUser = this.fetchUser.bind(this)
@@ -18,6 +18,7 @@ class UserShowPage extends React.Component {
       credentials: "same-origin"
     }).then(res => res.json())
       .then(data => {
+        console.log(data);
         this.setState({
           user: data
         })
@@ -47,7 +48,7 @@ class UserShowPage extends React.Component {
       <div className="profile-show">
         <img src={`${this.state.user.avatar_url}`} alt={`${this.state.user.name} profile photo`} className='profile-icon-large' />
         <div className='user-show-page-name'>
-          <h2><a href={this.state.user.github_url}>{this.state.user.name}</a></h2>
+          <h2><a href={this.state.user.github_url || this.state.user.html_url}>{this.state.user.name}</a></h2>
           <h5>Followers: {`${this.state.user.followers}`} - Following: {`${this.state.user.following}`}</h5>
         </div>
         <br />

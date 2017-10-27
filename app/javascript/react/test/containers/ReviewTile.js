@@ -13,12 +13,6 @@ describe('ReviewTile', () => {
     wrapper = shallow(<ReviewTile /> );
   });
 
-  // it('should render the ReviewTile Component with specific props', () => {
-  //   expect(wrapper.find(ReviewTile).props()).toEqual({
-  //     reviewBody: ""
-  //   });
-  // });
-
   it('should render an CommentContainer Component', () => {
     expect(wrapper.find(CommentContainer)).toBePresent();
   });

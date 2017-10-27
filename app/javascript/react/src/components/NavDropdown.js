@@ -30,8 +30,8 @@ const NavDropdown = props => {
         <a href='/'>
           <div className="dropdown-item" id='home'>Home</div>
         </a>
-        <div onClick={props.handleSignOut}>
-          <div className="dropdown-item" id='sign-in-out'>Sign out</div>
+        <div onClick={props.handleSignIn}>
+          <div className="dropdown-item" id='sign-in-out'>Sign in</div>
         </div>
       </div>
     )

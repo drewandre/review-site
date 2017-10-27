@@ -1,7 +1,6 @@
 import React from "react"
 
 const CommentTile = props => {
-  console.log(props)
   return (
     <div className="comment-tile row">
       <div className="user-box small-3 column">

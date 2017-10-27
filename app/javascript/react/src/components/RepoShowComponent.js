@@ -3,6 +3,7 @@ import React from "react"
 import { getLanguageColor } from "../helpers/languageColors"
 
 const RepoShowComponent = props => {
+
   let ratingTag
   if (props.repo.average_rating) {
     ratingTag = (
@@ -33,7 +34,9 @@ const RepoShowComponent = props => {
 
   return (
     <div className="repo-show">
-      <h2><a href={props.repo.github_url}>{props.repo.user_slug}/{props.repo.repo_slug}</a></h2>
+      <h2><a href={`/${props.repo.user_slug}`}>{props.repo.user_slug}</a>/
+      <a href={props.repo.github_url}><strong>{props.repo.repo_slug}</strong></a>
+      </h2>
       {ratingTag} {languageTag} <span className="rating">{props.repo.total_reviews || 0} reviews</span>
       <br />
       <div className="repo-description">{props.repo.description}</div>
