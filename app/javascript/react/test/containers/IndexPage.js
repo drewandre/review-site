@@ -21,8 +21,4 @@ describe('IndexPage', () => {
     expect(wrapper.find(NavBar)).toBePresent();
   });
 
-  it('should render an Index Component', () => {
-    expect(wrapper.find(Index)).toBePresent();
-  });
-
 });

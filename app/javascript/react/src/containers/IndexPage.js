@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Index from "./Index";
 import NavBar from "./NavBar";
+import About from "../components/About"
+import { Circle } from "better-react-spinkit"
 
 class IndexPage extends Component {
   constructor(props) {
@@ -9,7 +11,6 @@ class IndexPage extends Component {
       searchResults: [],
       loading: false
     }
-
     this.handleSearch = this.handleSearch.bind(this);
     this.loading = this.loading.bind(this);
   }
@@ -23,6 +24,18 @@ class IndexPage extends Component {
   }
 
   render() {
+
+    let indexContent;
+    if((this.state.searchResults.length > 0) && (!this.state.loading)) {
+      indexContent =
+      <Index searchResults={this.state.searchResults} />
+    } else if (this.state.loading) {
+      indexContent =
+      <div className='centered-loading'>
+        <Circle size={50} scaleEnd={1} />
+      </div>
+    }
+
     return (
       <div>
         <nav>
@@ -31,10 +44,7 @@ class IndexPage extends Component {
             loading={this.loading}
           />
         </nav>
-        <Index
-          searchResults={this.state.searchResults}
-          loading={this.state.loading}
-        />
+        {indexContent}
       </div>
     )
   }

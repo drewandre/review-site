@@ -26,8 +26,23 @@ $(document).keypress(
 $(document).ready(function() {
   $('.nav-dropdown').hide();
   $('.search-dropdown').hide();
+  // $('.centered-div-text').hide();
   // $('#search').hide();
 });
+
+// setTimeout(function(){
+//   document.getElementById('.centered-div-text').style.visibility = "visible";
+// },1000);
+
+// $(function() {
+//     setTimeout(function(){
+//         showElement();
+//      }, 1500);
+//
+//     function showElement() {
+//         $('.centered-div-text').fadeToggle();
+//     }
+//  });
 
 $(document).ready(function() {
   $('#account-menu').click( function(event){

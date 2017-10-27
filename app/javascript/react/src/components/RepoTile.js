@@ -2,6 +2,7 @@ import React from "react";
 import { getLanguageColor, prettifyStars } from "../helpers/languageColors"
 
 const RepoTile = props => {
+
   let repos = props.searchResults.map(repo => {
     let key = repo.id
     let repoName = repo.name
@@ -30,7 +31,7 @@ const RepoTile = props => {
   });
 
   return (
-    <div>
+    <div className='search-results' id={props.id} >
       {repos}
     </div>
   );

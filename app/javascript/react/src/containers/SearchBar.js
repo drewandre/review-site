@@ -43,13 +43,13 @@ class SearchBar extends Component {
         .then(body => {
           if(body.items != "") {
             this.props.handleSearch(body.items)
-          } else {
             this.props.loading(false);
+          } else {
+            // this.props.loading(true);
             this.setState({ searchError: true })
           }
         })
         .catch(error => this.props.error(error.message));
-        this.props.loading(false);
       }
     } else {
       this.props.loading(false);
@@ -79,7 +79,7 @@ class SearchBar extends Component {
 
   handleOnlyReviews() {
     // disabled at the moment
-    
+
     // console.log("onlyReviews: " + this.state.onlyReviews);
     // this.handleSearch();
   }
