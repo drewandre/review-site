@@ -7,22 +7,6 @@ Reviews may be voted on by many users. Users can also leave comments under revie
 
 ![alt text](https://github.com/drewandre/reporev/blob/master/public/top_RepoRev.png)
 
-## Contributors
-* [Zach Stone](https://github.com/zerovolts)
-* [Drew Andre](https://github.com/drewandre)
-* [Marcus Boyd](https://github.com/Marcus-boyd)
-* [Ted Cook](https://github.com/CaptainAngus)
-
-## Download instructions:
-```
-* git clone https://github.com/drewandre/reporev.git
-* rake db:create
-* rake db:migrate
-* rails s
-* ./bin/webpacker-dev-server
-* http://localhost:3000/
-```
-
 ## Features
 * Users may search for an existing GitHub repository
 * Each user can add 1 review per repository
@@ -39,3 +23,19 @@ Reviews may be voted on by many users. Users can also leave comments under revie
 * Feature testing with enzyme
 * Styling framework with foundation and CSS
 * Deployment on Heroku 
+
+## To run locally:
+```
+* git clone https://github.com/drewandre/reporev.git
+* rake db:create
+* rake db:migrate
+* rails s
+* ./bin/webpacker-dev-server
+* http://localhost:3000/
+```
+
+## Contributors
+* [Zach Stone](https://github.com/zerovolts)
+* [Drew Andre](https://github.com/drewandre)
+* [Marcus Boyd](https://github.com/Marcus-boyd)
+* [Ted Cook](https://github.com/CaptainAngus)
