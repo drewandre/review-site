@@ -11,6 +11,7 @@
 
 ![alt text](https://github.com/drewandre/reporev/blob/master/public/top_RepoRev.png)
 
+## Description
 Reporev is a GitHub repository review app built wit Ruby on Rails and React.
 This was created because GitHub does not allow users to review a repository.
 Reviews may be voted on by many users. Users can also leave comments under reviews.
