@@ -24,12 +24,12 @@ Reviews may be voted on by many users. Users can also leave comments under revie
 
 ## Download instructions:
 ```
-git clone https://github.com/drewandre/reporev.git
-rake db:create
-rake db:migrate
-rails s
-./bin/webpacker-dev-server
-http://localhost:3000/
+- git clone https://github.com/drewandre/reporev.git
+- rake db:create
+- rake db:migrate
+- rails s
+- ./bin/webpacker-dev-server
+- http://localhost:3000/
 ```
 
 ## Features
